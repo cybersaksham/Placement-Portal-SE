@@ -13,4 +13,4 @@ const StudentSchema = new mongoose.Schema({
     isBanned: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model("student", StudentSchema);
+module.exports = mongoose.models.student || mongoose.model("student", StudentSchema);

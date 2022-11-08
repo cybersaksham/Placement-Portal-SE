@@ -6,4 +6,4 @@ const ApplicationSchema = new mongoose.Schema({
     resume: { type: String, require: true }
 });
 
-module.exports = mongoose.model("application", ApplicationSchema);
+module.exports = mongoose.models.application || mongoose.model("application", ApplicationSchema);

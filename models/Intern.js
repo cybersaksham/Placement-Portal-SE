@@ -5,4 +5,4 @@ const InternSchema = new mongoose.Schema({
     student: { type: mongoose.Schema.Types.ObjectId, ref: "student", require: true },
 });
 
-module.exports = mongoose.model("intern", InternSchema);
+module.exports = mongoose.models.intern || mongoose.model("intern", InternSchema);

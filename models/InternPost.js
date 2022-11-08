@@ -6,4 +6,4 @@ const InternPostSchema = new mongoose.Schema({
     duration: { type: String, require: true },
 });
 
-module.exports = mongoose.model("intern_posts", InternPostSchema);
+module.exports = mongoose.models.intern_posts || mongoose.model("intern_posts", InternPostSchema);

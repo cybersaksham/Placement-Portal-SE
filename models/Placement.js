@@ -5,4 +5,4 @@ const PlacementSchema = new mongoose.Schema({
     student: { type: mongoose.Schema.Types.ObjectId, ref: "student", require: true },
 });
 
-module.exports = mongoose.model("placement", PlacementSchema);
+module.exports = mongoose.models.placement || mongoose.model("placement", PlacementSchema);

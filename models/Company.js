@@ -9,4 +9,4 @@ const CompanySchema = new mongoose.Schema({
     isBanned: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model("company", CompanySchema);
+module.exports = mongoose.models.company || mongoose.model("company", CompanySchema);

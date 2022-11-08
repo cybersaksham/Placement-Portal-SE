@@ -10,4 +10,4 @@ const PostingSchema = new mongoose.Schema({
     isClosed: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model("posting", PostingSchema);
+module.exports = mongoose.models.posting || mongoose.model("posting", PostingSchema);

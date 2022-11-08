@@ -6,4 +6,4 @@ const JobPostSchema = new mongoose.Schema({
     shares: { type: String },
 });
 
-module.exports = mongoose.model("job_posts", JobPostSchema);
+module.exports = mongoose.models.job_posts || mongoose.model("job_posts", JobPostSchema);
