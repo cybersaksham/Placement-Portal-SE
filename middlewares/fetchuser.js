@@ -3,7 +3,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "NOT_SO_SECRET";
 
 export default function fetchUser(req, res, next) {
     // Getting token
-    const token = req.header("auth-token");
+    const token = req.headers["auth-token"];
 
     // Verifying Token
     if (!token) {

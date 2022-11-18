@@ -1,4 +1,5 @@
 import { CompanyModel } from "../../models";
+import { userTypes } from "../../lib/userType";
 import { connectToDB, initValidation } from "../../middlewares";
 import { companyValidator } from "../../lib/validators";
 import bcrypt from "bcryptjs";
@@ -14,7 +15,11 @@ export default router
             const { companyId } = req.query;
             if (companyId) {
                 const company = await CompanyModel.findById(companyId).select("-password");
-                return res.send(company);
+                if (company) return res.send(company);
+                else return res.status(400).json({
+                    error: "Arguments Error",
+                    message: "No company found with given id"
+                });
             } else {
                 return res.status(400).json({
                     error: "Arguments Error",
@@ -46,11 +51,17 @@ export default router
             const secPass = await bcrypt.hash(password, salt);
 
             // Creating a new Company
-            company = await CompanyModel.create({ name, email, password, type, headOffice })
+            company = await CompanyModel.create({
+                name,
+                email,
+                password: secPass,
+                type,
+                headOffice
+            });
 
             // Generating Token
             const data = {
-                user: { id: company.id },
+                user: { id: company.id, type: userTypes.company },
             };
             const authToken = jwt.sign(data, JWT_SECRET);
 

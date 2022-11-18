@@ -1,0 +1,94 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Placement-Portal",
+  "dateExported": "2022-11-18T14:10:45.755Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "e30952cd-1c73-471c-966c-4e552643c73d",
+      "name": "Company",
+      "containerId": "",
+      "created": "2022-11-18T13:21:57.452Z",
+      "sortNum": 10000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "bb5369ba-8510-4631-8bc7-681be64bd10c",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
+      "name": "Get Company",
+      "url": "http://localhost:3000/api/company?companyId=63778ad1de1b0fda07e3e921",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-11-18T13:35:40.628Z",
+      "modified": "2022-11-18T13:39:12.885Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "companyId",
+          "value": "63778ad1de1b0fda07e3e921",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "8a2723c4-3964-4353-8a4e-6fe6312fafc7",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
+      "name": "Create Company",
+      "url": "http://localhost:3000/api/company",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-11-18T13:36:14.779Z",
+      "modified": "2022-11-18T13:46:31.551Z",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Atlassian\",\n  \"email\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Unicorn\",\n  \"headOffice\": \"Australia\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "c9ff0ea6-c9e2-4abc-a229-a47e94785bde",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
+      "name": "Fetch Company",
+      "url": "http://localhost:3000/api/user",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-11-18T14:04:30.331Z",
+      "modified": "2022-11-18T14:09:19.054Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY4NzgwMjExfQ.fanoXubeZx13hB2mwWSgxFEjnvkKOm1YAHEswzO376U"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "dc3b4d42-4f1b-486c-b961-3b0af8d909f0",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
+      "name": "Login Company",
+      "url": "http://localhost:3000/api/login",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2022-11-18T13:53:21.106Z",
+      "modified": "2022-11-18T14:00:49.733Z",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Company\"\n}",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
+}
