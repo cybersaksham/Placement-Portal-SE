@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-18T14:10:45.755Z",
+  "dateExported": "2022-11-18T16:11:18.545Z",
   "version": "1.1",
   "folders": [
     {
@@ -10,6 +10,13 @@
       "containerId": "",
       "created": "2022-11-18T13:21:57.452Z",
       "sortNum": 10000
+    },
+    {
+      "_id": "e8dda202-0bb9-4804-bb7c-3297091b8461",
+      "name": "Student",
+      "containerId": "",
+      "created": "2022-11-18T14:15:35.480Z",
+      "sortNum": 20000
     }
   ],
   "requests": [
@@ -86,6 +93,45 @@
       "body": {
         "type": "json",
         "raw": "{\n  \"email\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Company\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "10ebba5b-66f4-4429-b0bd-732670729891",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
+      "name": "Get Student",
+      "url": "http://localhost:3000/api/student?studentId=6377ae62de1b0fda07e3e940",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2022-11-18T14:15:50.177Z",
+      "modified": "2022-11-18T16:10:22.855Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "studentId",
+          "value": "6377ae62de1b0fda07e3e940",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "3f1a55ad-d214-418a-b60e-52cce5c1e688",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
+      "name": "Create Student",
+      "url": "http://localhost:3000/api/student",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2022-11-18T14:19:06.831Z",
+      "modified": "2022-11-18T16:09:57.048Z",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Saksham Bindal\",\n  \"email\": \"saksham.bindal2004@gmail.com\",\n  \"password\": \"sak1234\",\n  \"degree\": \"B.Tech\",\n  \"branch\": \"CSE\",\n  \"admissionYear\": 2020,\n  \"dob\": \"2004-01-05\",\n  \"skills\": [\"Frontend\"],\n  \"cgpa\": \"8.59\"\n}",
         "form": []
       },
       "tests": []

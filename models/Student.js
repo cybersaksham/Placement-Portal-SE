@@ -6,7 +6,7 @@ const StudentSchema = new mongoose.Schema({
     password: { type: String, require: true },
     degree: { type: String, require: true },
     branch: { type: String, require: true },
-    addmissionYear: { type: Number, require: true },
+    admissionYear: { type: Number, require: true },
     dob: { type: Date, require: true },
     skills: { type: [String] },
     cgpa: { type: Number, require: true },
