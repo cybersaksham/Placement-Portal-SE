@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-18T16:11:18.545Z",
+  "dateExported": "2022-11-21T06:15:00.244Z",
   "version": "1.1",
   "folders": [
     {
@@ -68,11 +68,11 @@
       "method": "POST",
       "sortNum": 30000,
       "created": "2022-11-18T14:04:30.331Z",
-      "modified": "2022-11-18T14:09:19.054Z",
+      "modified": "2022-11-21T06:08:49.607Z",
       "headers": [
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY4NzgwMjExfQ.fanoXubeZx13hB2mwWSgxFEjnvkKOm1YAHEswzO376U"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
         }
       ],
       "params": [],
@@ -87,12 +87,12 @@
       "method": "POST",
       "sortNum": 40000,
       "created": "2022-11-18T13:53:21.106Z",
-      "modified": "2022-11-18T14:00:49.733Z",
+      "modified": "2022-11-21T06:08:36.897Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"email\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Company\"\n}",
+        "raw": "{\n  \"id\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Company\"\n}",
         "form": []
       },
       "tests": []
@@ -102,19 +102,13 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
       "name": "Get Student",
-      "url": "http://localhost:3000/api/student?studentId=6377ae62de1b0fda07e3e940",
+      "url": "http://localhost:3000/api/student?sid=2020UCP1801",
       "method": "GET",
       "sortNum": 40000,
       "created": "2022-11-18T14:15:50.177Z",
-      "modified": "2022-11-18T16:10:22.855Z",
+      "modified": "2022-11-21T06:14:18.018Z",
       "headers": [],
-      "params": [
-        {
-          "name": "studentId",
-          "value": "6377ae62de1b0fda07e3e940",
-          "isPath": false
-        }
-      ],
+      "params": [{ "name": "sid", "value": "2020UCP1801", "isPath": false }],
       "tests": []
     },
     {
@@ -126,12 +120,50 @@
       "method": "POST",
       "sortNum": 50000,
       "created": "2022-11-18T14:19:06.831Z",
-      "modified": "2022-11-18T16:09:57.048Z",
+      "modified": "2022-11-21T06:12:49.305Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"name\": \"Saksham Bindal\",\n  \"email\": \"saksham.bindal2004@gmail.com\",\n  \"password\": \"sak1234\",\n  \"degree\": \"B.Tech\",\n  \"branch\": \"CSE\",\n  \"admissionYear\": 2020,\n  \"dob\": \"2004-01-05\",\n  \"skills\": [\"Frontend\"],\n  \"cgpa\": \"8.59\"\n}",
+        "raw": "{\n  \"name\": \"Saksham Bindal\",\n  \"sid\": \"2020UCP1801\",\n  \"password\": \"sak1234\",\n  \"degree\": \"B.Tech\",\n  \"branch\": \"CSE\",\n  \"admissionYear\": 2020,\n  \"dob\": \"2004-01-05\",\n  \"skills\": [\"Frontend\"],\n  \"cgpa\": \"8.59\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "ee67f5e9-afaa-4722-99dd-3edf5839cf86",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
+      "name": "Fetch Student",
+      "url": "http://localhost:3000/api/user",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2022-11-21T05:58:10.092Z",
+      "modified": "2022-11-21T06:14:50.249Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjE3MDA3ZGUwODA0ZmJkMmZmNjE0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDExMjgzfQ.UGad1Q0pE0zLGJFWUEE_0LiAz1tonkPgilS6UMgj83M"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "e1eaa785-2762-4654-9807-5a8783f15cad",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
+      "name": "Login Student",
+      "url": "http://localhost:3000/api/login",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2022-11-21T05:58:17.615Z",
+      "modified": "2022-11-21T06:14:41.984Z",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"2020UCP1801\",\n  \"password\": \"sak1234\",\n  \"type\": \"Student\"\n}",
         "form": []
       },
       "tests": []

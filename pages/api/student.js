@@ -12,9 +12,9 @@ export default router
     .all(connectToDB)
     .get(async (req, res) => {
         try {
-            const { studentId } = req.query;
-            if (studentId) {
-                const student = await StudentModel.findById(studentId).select("-password");
+            const { sid } = req.query;
+            if (sid) {
+                const student = await StudentModel.find({ sid }).select("-password");
                 if (student) return res.send(student);
                 else return res.status(400).json({
                     error: "Arguments Error",
@@ -35,17 +35,17 @@ export default router
     })
     .post(initValidation(studentValidator), async (req, res) => {
         try {
-            const { name, email, password,
+            const { name, sid, password,
                 degree, branch, admissionYear,
                 dob, skills, cgpa
             } = req.body;
 
             // Getting company if already exists
-            let student = await StudentModel.findOne({ email });
+            let student = await StudentModel.findOne({ sid });
             if (student) {
                 res.status(400).json({
                     error: "Validation Error",
-                    message: "Student already exists with this email id",
+                    message: "Student already exists with this id",
                 })
             }
 
@@ -56,7 +56,7 @@ export default router
             // Creating a new Company
             student = await StudentModel.create({
                 name,
-                email,
+                sid,
                 password: secPass,
                 degree, branch, admissionYear,
                 dob, skills, cgpa

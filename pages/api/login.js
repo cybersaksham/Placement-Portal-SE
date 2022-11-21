@@ -1,6 +1,5 @@
-import { CompanyModel, StudentModel, AdminModel } from "../../models";
 import { connectToDB } from "../../middlewares";
-import { modelTypes } from "../../lib/userType";
+import { modelTypes, userTypes } from "../../lib/userType";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import router from "../../lib/router";
@@ -11,9 +10,13 @@ export default router
     .all(connectToDB)
     .post(async (req, res) => {
         try {
-            const { email, password, type } = req.body;
+            const { id, password, type } = req.body;
 
-            let user = await modelTypes[type].findOne({ email });
+            let user = await modelTypes[type].findOne(
+                userTypes.student === type
+                    ? { sid: id }
+                    : { id }
+            );
             if (!user) {
                 return res.status(400).json({
                     error: "Authentication Error",
