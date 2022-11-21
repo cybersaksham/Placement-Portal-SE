@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-21T06:53:58.171Z",
+  "dateExported": "2022-11-21T07:01:03.137Z",
   "version": "1.1",
   "folders": [
     {
@@ -215,6 +215,51 @@
         {
           "name": "internId",
           "value": "637b1e557de0804fbd2ff620",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "817f4f12-7721-4ab9-ae5c-2554d16dee60",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
+      "name": "Create Job Post",
+      "url": "http://localhost:3000/api/jobPost",
+      "method": "POST",
+      "sortNum": 80000,
+      "created": "2022-11-21T06:58:48.797Z",
+      "modified": "2022-11-21T06:59:35.741Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"role\": \"SDE\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"ctc\": \"10 LPA\",\n  \"shares\": \"80%\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "25ffbd9c-25fc-48ee-8eab-79028f9127ab",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
+      "name": "Get Job Post",
+      "url": "http://localhost:3000/api/jobPost?jobId=637b21df7de0804fbd2ff62e",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2022-11-21T07:00:17.075Z",
+      "modified": "2022-11-21T07:00:49.321Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "jobId",
+          "value": "637b21df7de0804fbd2ff62e",
           "isPath": false
         }
       ],
