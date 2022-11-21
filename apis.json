@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-21T07:19:47.026Z",
+  "dateExported": "2022-11-21T07:31:36.249Z",
   "version": "1.1",
   "folders": [
     {
@@ -308,6 +308,31 @@
         }
       ],
       "params": [],
+      "tests": []
+    },
+    {
+      "_id": "40426b94-a3b6-4b5d-8af8-27274fce1e5e",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
+      "name": "Close Posting",
+      "url": "http://localhost:3000/api/closePost?postingId=637b21df7de0804fbd2ff62c",
+      "method": "PUT",
+      "sortNum": 100000,
+      "created": "2022-11-21T07:27:50.240Z",
+      "modified": "2022-11-21T07:31:05.257Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+        }
+      ],
+      "params": [
+        {
+          "name": "postingId",
+          "value": "637b21df7de0804fbd2ff62c",
+          "isPath": false
+        }
+      ],
       "tests": []
     }
   ]
