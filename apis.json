@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-21T07:01:03.137Z",
+  "dateExported": "2022-11-21T07:19:47.026Z",
   "version": "1.1",
   "folders": [
     {
@@ -17,6 +17,13 @@
       "containerId": "",
       "created": "2022-11-18T14:15:35.480Z",
       "sortNum": 20000
+    },
+    {
+      "_id": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "Admin",
+      "containerId": "",
+      "created": "2022-11-21T07:11:08.021Z",
+      "sortNum": 25000
     },
     {
       "_id": "b83bd943-10cd-4388-b4e8-399db844e45c",
@@ -246,6 +253,25 @@
       "tests": []
     },
     {
+      "_id": "a12c13fd-1e0a-4b09-9c04-aaf83b410be2",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "Login",
+      "url": "http://localhost:3000/api/login",
+      "method": "POST",
+      "sortNum": 80000,
+      "created": "2022-11-21T07:11:24.933Z",
+      "modified": "2022-11-21T07:17:32.638Z",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"2020UCP1801@mnit.ac.in\",\n  \"password\": \"sak1234\",\n  \"type\": \"Admin\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
       "_id": "25ffbd9c-25fc-48ee-8eab-79028f9127ab",
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
@@ -263,6 +289,25 @@
           "isPath": false
         }
       ],
+      "tests": []
+    },
+    {
+      "_id": "a03b4664-6169-4413-862d-5c8941bbfbf3",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "Fetch Admin",
+      "url": "http://localhost:3000/api/user",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2022-11-21T07:17:47.806Z",
+      "modified": "2022-11-21T07:18:32.727Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+        }
+      ],
+      "params": [],
       "tests": []
     }
   ]

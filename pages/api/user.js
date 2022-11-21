@@ -1,5 +1,5 @@
 import { connectToDB, fetchUser } from "../../middlewares";
-import { modelTypes } from "../../lib/userType";
+import { modelTypes } from "../../lib/types";
 import router from "../../lib/router";
 
 export default router

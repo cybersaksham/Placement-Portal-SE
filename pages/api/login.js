@@ -15,7 +15,7 @@ export default router
             let user = await modelTypes[type].findOne(
                 userTypes.student === type
                     ? { sid: id }
-                    : { id }
+                    : { email: id }
             );
             if (!user) {
                 return res.status(400).json({
