@@ -1,5 +1,5 @@
 import { StudentModel } from "../../models";
-import { userTypes } from "../../lib/userType";
+import { userTypes } from "../../lib/types";
 import { connectToDB, initValidation } from "../../middlewares";
 import { studentValidator } from "../../lib/validators";
 import bcrypt from "bcryptjs";

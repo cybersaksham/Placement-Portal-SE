@@ -1,5 +1,5 @@
 import { connectToDB } from "../../middlewares";
-import { modelTypes, userTypes } from "../../lib/userType";
+import { modelTypes, userTypes } from "../../lib/types";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import router from "../../lib/router";
