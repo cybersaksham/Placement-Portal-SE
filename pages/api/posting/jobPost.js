@@ -1,5 +1,5 @@
 import { PostingModel, JobPostModel, CompanyModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { postTypes, userTypes } from "../../../lib/types";
 import { connectToDB, initValidation, fetchUser } from "../../../middlewares";
 import { postingValidator, jobPostValidator } from "../../../lib/validators";
 import router from "../../../lib/router";
@@ -80,7 +80,7 @@ export default router
                 // Creating a new Posting
                 let posting = await PostingModel.create({
                     company: userId, role, branches,
-                    minCGPA, location, joiningDate,
+                    minCGPA, location, joiningDate, type: postTypes.job
                 });
 
                 // Creating an Job Posting

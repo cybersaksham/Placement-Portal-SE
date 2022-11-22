@@ -7,6 +7,7 @@ const PostingSchema = new mongoose.Schema({
     minCGPA: { type: Number },
     location: { type: String },
     joiningDate: { type: Date },
+    type: { type: String, required: true },
     isClosed: { type: Boolean, default: false }
 });
 

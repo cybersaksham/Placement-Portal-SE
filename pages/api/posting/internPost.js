@@ -1,5 +1,5 @@
 import { PostingModel, InternPostModel, CompanyModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { userTypes, postTypes } from "../../../lib/types";
 import { connectToDB, initValidation, fetchUser } from "../../../middlewares";
 import { postingValidator, internPostValidator } from "../../../lib/validators";
 import router from "../../../lib/router";
@@ -80,7 +80,7 @@ export default router
                 // Creating a new Posting
                 let posting = await PostingModel.create({
                     company: userId, role, branches,
-                    minCGPA, location, joiningDate,
+                    minCGPA, location, joiningDate, type: postTypes.intern
                 });
 
                 // Creating an Intern Posting
