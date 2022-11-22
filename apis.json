@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-21T07:31:36.249Z",
+  "dateExported": "2022-11-22T05:33:01.955Z",
   "version": "1.1",
   "folders": [
     {
@@ -172,7 +172,7 @@
       "method": "POST",
       "sortNum": 60000,
       "created": "2022-11-21T06:36:34.422Z",
-      "modified": "2022-11-21T06:44:27.945Z",
+      "modified": "2022-11-22T05:32:42.906Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
@@ -183,7 +183,7 @@
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"role\": \"SDE\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"150K\",\n  \"duration\": \"2 mos\"\n}",
+        "raw": "{\n  \"role\": \"SDE\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"100K\",\n  \"duration\": \"2 mos\"\n}",
         "form": []
       },
       "tests": []
@@ -333,6 +333,106 @@
           "isPath": false
         }
       ],
+      "tests": []
+    },
+    {
+      "_id": "7e508ef5-ebe2-4d38-9592-bd94d0cc0fb5",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "Ban Student",
+      "url": "http://localhost:3000/api/ban",
+      "method": "PUT",
+      "sortNum": 100000,
+      "created": "2022-11-22T05:27:45.161Z",
+      "modified": "2022-11-22T05:29:39.834Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"637b17007de0804fbd2ff614\",\n  \"type\": \"Student\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "0e539c29-71a6-4ef2-a1b8-ab4425d16530",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "UnBan Student",
+      "url": "http://localhost:3000/api/unban",
+      "method": "PUT",
+      "sortNum": 105000,
+      "created": "2022-11-22T05:30:04.503Z",
+      "modified": "2022-11-22T05:30:40.719Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"637b17007de0804fbd2ff614\",\n  \"type\": \"Student\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "63813169-c5ba-42d9-9982-aaeceefcd8bb",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "Ban Company",
+      "url": "http://localhost:3000/api/ban",
+      "method": "PUT",
+      "sortNum": 110000,
+      "created": "2022-11-22T05:23:02.364Z",
+      "modified": "2022-11-22T05:28:10.695Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"63778ad1de1b0fda07e3e921\",\n  \"type\": \"Company\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "22022fa3-f312-4582-b482-448b472826ab",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
+      "name": "UnBan Company",
+      "url": "http://localhost:3000/api/unban",
+      "method": "PUT",
+      "sortNum": 115000,
+      "created": "2022-11-22T05:28:53.465Z",
+      "modified": "2022-11-22T05:29:54.246Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": \"63778ad1de1b0fda07e3e921\",\n  \"type\": \"Company\"\n}",
+        "form": []
+      },
       "tests": []
     }
   ]

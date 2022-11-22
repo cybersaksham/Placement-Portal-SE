@@ -63,6 +63,12 @@ export default router
                         message: "You are not logged in as a company"
                     });
                 }
+                if (company.isBanned) {
+                    return res.status(400).json({
+                        error: "Authentication Error",
+                        message: "You are currently banned by admin"
+                    });
+                }
 
                 const { role, branches,
                     minCGPA, location, joiningDate,
