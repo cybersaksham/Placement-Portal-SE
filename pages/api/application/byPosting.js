@@ -34,7 +34,7 @@ export default router
                     PostingModel.findById(postingId)
                         .populate({ path: "company", select: "-password" })
                         .exec((err, data) => {
-                            if (data.company.id !== userId) {
+                            if (data.company.id != userId) {
                                 return res.status(400).json({
                                     error: "Arguments Error",
                                     message: "No posting found with given id"

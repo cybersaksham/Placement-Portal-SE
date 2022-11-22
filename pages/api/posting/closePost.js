@@ -1,5 +1,5 @@
-import { PostingModel, CompanyModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { PostingModel, CompanyModel, ApplicationModel } from "../../../models";
+import { applicationStatus, userTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -31,6 +31,13 @@ export default router
             if (postingId) {
                 let posting = await PostingModel.findById(postingId);
                 if (posting) {
+                    // Closing all applications
+                    await ApplicationModel.updateMany(
+                        { posting: postingId, status: applicationStatus.applied },
+                        { $set: { status: applicationStatus.closed } },
+                        { new: true },
+                    );
+
                     posting = await PostingModel.findByIdAndUpdate(postingId,
                         { $set: { isClosed: true } },
                         { new: true },

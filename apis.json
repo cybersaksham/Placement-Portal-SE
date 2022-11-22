@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-22T07:08:24.694Z",
+  "dateExported": "2022-11-22T16:35:17.591Z",
   "version": "1.1",
   "folders": [
     {
@@ -38,6 +38,13 @@
       "containerId": "",
       "created": "2022-11-22T06:06:56.069Z",
       "sortNum": 50000
+    },
+    {
+      "_id": "e25a85a8-78ef-41a5-9f7d-d1d4579ce6ff",
+      "name": "Hiring",
+      "containerId": "",
+      "created": "2022-11-22T15:53:13.933Z",
+      "sortNum": 60000
     }
   ],
   "requests": [
@@ -108,12 +115,12 @@
       "method": "POST",
       "sortNum": 40000,
       "created": "2022-11-18T13:53:21.106Z",
-      "modified": "2022-11-22T05:41:32.352Z",
+      "modified": "2022-11-22T15:54:11.557Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"id\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Company\"\n}",
+        "raw": "{\n  \"id\": \"deshaw@gmail.com\",\n  \"password\": \"deshaw123\",\n  \"type\": \"Company\"\n}",
         "form": []
       },
       "tests": []
@@ -179,7 +186,7 @@
       "method": "POST",
       "sortNum": 60000,
       "created": "2022-11-21T06:36:34.422Z",
-      "modified": "2022-11-22T06:46:27.795Z",
+      "modified": "2022-11-22T07:21:03.626Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
@@ -190,7 +197,7 @@
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"role\": \"SWE\",\n  \"branches\": [\"CSE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"200K\",\n  \"duration\": \"2 mos\"\n}",
+        "raw": "{\n  \"role\": \"SWE2\",\n  \"branches\": [\"CSE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"200K\",\n  \"duration\": \"2 mos\"\n}",
         "form": []
       },
       "tests": []
@@ -243,7 +250,7 @@
       "method": "POST",
       "sortNum": 80000,
       "created": "2022-11-21T06:58:48.797Z",
-      "modified": "2022-11-22T05:50:56.912Z",
+      "modified": "2022-11-22T07:21:43.445Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
@@ -254,7 +261,7 @@
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"role\": \"SDE\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"ctc\": \"10 LPA\",\n  \"shares\": \"80%\"\n}",
+        "raw": "{\n  \"role\": \"SDE2\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"ctc\": \"10 LPA\",\n  \"shares\": \"80%\"\n}",
         "form": []
       },
       "tests": []
@@ -322,11 +329,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Close Posting",
-      "url": "http://localhost:3000/api/posting/closePost?postingId=637c6378523d61a19f5ed061",
+      "url": "http://localhost:3000/api/posting/closePost?postingId=637c7888440734aeb4c6ac20",
       "method": "PUT",
       "sortNum": 100000,
       "created": "2022-11-21T07:27:50.240Z",
-      "modified": "2022-11-22T05:53:30.454Z",
+      "modified": "2022-11-22T16:33:54.000Z",
       "headers": [
         {
           "name": "auth-token",
@@ -336,7 +343,7 @@
       "params": [
         {
           "name": "postingId",
-          "value": "637c6378523d61a19f5ed061",
+          "value": "637c7888440734aeb4c6ac20",
           "isPath": false
         }
       ],
@@ -451,7 +458,7 @@
       "method": "POST",
       "sortNum": 120000,
       "created": "2022-11-22T06:07:06.711Z",
-      "modified": "2022-11-22T06:26:40.009Z",
+      "modified": "2022-11-22T16:02:15.621Z",
       "headers": [
         {
           "name": "auth-token",
@@ -462,7 +469,7 @@
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"posting\": \"637c6378523d61a19f5ed061\",\n  \"resume\": \"https://www.cybersaksham.co.in/Resume_Saksham.pdf\"\n}",
+        "raw": "{\n  \"posting\": \"637c7888440734aeb4c6ac20\",\n  \"resume\": \"https://www.cybersaksham.co.in/Resume_Saksham.pdf\"\n}",
         "form": []
       },
       "tests": []
@@ -550,6 +557,95 @@
         }
       ],
       "params": [],
+      "tests": []
+    },
+    {
+      "_id": "0f4ad383-8090-4403-8a37-3cc35f68e50a",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e25a85a8-78ef-41a5-9f7d-d1d4579ce6ff",
+      "name": "Accept Application",
+      "url": "http://localhost:3000/api/hiring/accept",
+      "method": "POST",
+      "sortNum": 170000,
+      "created": "2022-11-22T15:53:20.181Z",
+      "modified": "2022-11-22T16:05:06.931Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
+        },
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"applicationId\": \"637cf320608ae52793f2a50c\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "1dec4357-f51b-43cf-81e2-be3f5702808c",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e25a85a8-78ef-41a5-9f7d-d1d4579ce6ff",
+      "name": "Reject Application",
+      "url": "http://localhost:3000/api/hiring/reject",
+      "method": "POST",
+      "sortNum": 180000,
+      "created": "2022-11-22T16:06:03.784Z",
+      "modified": "2022-11-22T16:06:15.939Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
+        },
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"applicationId\": \"637cf320608ae52793f2a50c\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "9f7ab032-bd2a-493d-867f-0d6a589b8e1e",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e25a85a8-78ef-41a5-9f7d-d1d4579ce6ff",
+      "name": "Get By Posting",
+      "url": "http://localhost:3000/api/hiring/byStudent?type=Job",
+      "method": "GET",
+      "sortNum": 180000,
+      "created": "2022-11-22T16:25:01.334Z",
+      "modified": "2022-11-22T16:30:24.481Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYxYWQ3Yjg5NmNkYzJmYTExMDA0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDk1ODk4fQ.NIduP_4jOeemwFbpN6Qb1l-IzhRSzoawC2tftQ0HtYU"
+        }
+      ],
+      "params": [{ "name": "type", "value": "Job", "isPath": false }],
+      "tests": []
+    },
+    {
+      "_id": "bee902b4-bee2-4478-bba6-1a877a493994",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "e25a85a8-78ef-41a5-9f7d-d1d4579ce6ff",
+      "name": "Get By Student",
+      "url": "http://localhost:3000/api/hiring/byPosting?postingId=637c635215cbf4f00f698d6f",
+      "method": "GET",
+      "sortNum": 190000,
+      "created": "2022-11-22T16:29:36.015Z",
+      "modified": "2022-11-22T16:29:36.015Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "postingId",
+          "value": "637c635215cbf4f00f698d6f",
+          "isPath": false
+        }
+      ],
       "tests": []
     }
   ]

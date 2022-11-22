@@ -1,5 +1,5 @@
 import { StudentModel, ApplicationModel, PostingModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { applicationStatus, userTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -87,7 +87,7 @@ export default router
                 if (post && !post.isClosed) {
                     // Creating a new Application
                     let application = await ApplicationModel.create({
-                        posting, student: userId, resume
+                        posting, student: userId, resume, status: applicationStatus.applied
                     });
 
                     return res.json(application);
