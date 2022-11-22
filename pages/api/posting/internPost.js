@@ -1,18 +1,18 @@
-import { PostingModel, JobPostModel, CompanyModel } from "../../models";
-import { userTypes } from "../../lib/types";
-import { connectToDB, initValidation, fetchUser } from "../../middlewares";
-import { postingValidator, jobPostValidator } from "../../lib/validators";
-import router from "../../lib/router";
+import { PostingModel, InternPostModel, CompanyModel } from "../../../models";
+import { userTypes } from "../../../lib/types";
+import { connectToDB, initValidation, fetchUser } from "../../../middlewares";
+import { postingValidator, internPostValidator } from "../../../lib/validators";
+import router from "../../../lib/router";
 
 export default router
     .all(connectToDB)
     .get(async (req, res) => {
         try {
-            const { jobId } = req.query;
-            if (jobId) {
-                const job = await JobPostModel.findById(jobId);
-                if (job) {
-                    JobPostModel.findById(jobId)
+            const { internId } = req.query;
+            if (internId) {
+                const intern = await InternPostModel.findById(internId);
+                if (intern) {
+                    InternPostModel.findById(internId)
                         .populate("posting")
                         .exec((err, post) => {
                             if (err) {
@@ -27,12 +27,12 @@ export default router
                         });
                 } else return res.status(400).json({
                     error: "Arguments Error",
-                    message: "No job post found with given id"
+                    message: "No intern post found with given id"
                 });
             } else {
                 return res.status(400).json({
                     error: "Arguments Error",
-                    message: "Job Id not given"
+                    message: "Intern Id not given"
                 });
             }
         } catch (e) {
@@ -42,7 +42,7 @@ export default router
             });
         }
     })
-    .post(fetchUser, initValidation(postingValidator), initValidation(jobPostValidator),
+    .post(fetchUser, initValidation(postingValidator), initValidation(internPostValidator),
         async (req, res) => {
             try {
                 // Finding User
@@ -72,7 +72,7 @@ export default router
 
                 const { role, branches,
                     minCGPA, location, joiningDate,
-                    ctc, shares } = req.body;
+                    stipend, duration } = req.body;
 
                 // Creating a new Posting
                 let posting = await PostingModel.create({
@@ -80,13 +80,13 @@ export default router
                     minCGPA, location, joiningDate,
                 });
 
-                // Creating an Job Posting
-                let jobPost = await JobPostModel.create({
+                // Creating an Intern Posting
+                let internPost = await InternPostModel.create({
                     posting: posting.id,
-                    ctc, shares
+                    stipend, duration
                 })
 
-                JobPostModel.findById(jobPost.id)
+                InternPostModel.findById(internPost.id)
                     .populate("posting")
                     .exec((err, post) => {
                         if (err) {

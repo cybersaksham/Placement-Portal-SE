@@ -1,6 +1,6 @@
-import { connectToDB, fetchUser } from "../../middlewares";
-import { modelTypes } from "../../lib/types";
-import router from "../../lib/router";
+import { connectToDB, fetchUser } from "../../../middlewares";
+import { modelTypes } from "../../../lib/types";
+import router from "../../../lib/router";
 
 export default router
     .all(connectToDB)

@@ -1,7 +1,7 @@
-import { PostingModel, CompanyModel } from "../../models";
-import { userTypes } from "../../lib/types";
-import { connectToDB, fetchUser } from "../../middlewares";
-import router from "../../lib/router";
+import { PostingModel, CompanyModel } from "../../../models";
+import { userTypes } from "../../../lib/types";
+import { connectToDB, fetchUser } from "../../../middlewares";
+import router from "../../../lib/router";
 
 export default router
     .all(connectToDB)

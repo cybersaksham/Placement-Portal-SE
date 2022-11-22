@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-22T05:33:01.955Z",
+  "dateExported": "2022-11-22T05:53:50.824Z",
   "version": "1.1",
   "folders": [
     {
@@ -39,16 +39,16 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
       "name": "Get Company",
-      "url": "http://localhost:3000/api/company?companyId=63778ad1de1b0fda07e3e921",
+      "url": "http://localhost:3000/api/auth/company?companyId=637c60cb0d9cb5798388edcc",
       "method": "GET",
       "sortNum": 20000,
       "created": "2022-11-18T13:35:40.628Z",
-      "modified": "2022-11-18T13:39:12.885Z",
+      "modified": "2022-11-22T05:43:59.483Z",
       "headers": [],
       "params": [
         {
           "name": "companyId",
-          "value": "63778ad1de1b0fda07e3e921",
+          "value": "637c60cb0d9cb5798388edcc",
           "isPath": false
         }
       ],
@@ -59,11 +59,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
       "name": "Create Company",
-      "url": "http://localhost:3000/api/company",
+      "url": "http://localhost:3000/api/auth/company",
       "method": "POST",
       "sortNum": 30000,
       "created": "2022-11-18T13:36:14.779Z",
-      "modified": "2022-11-18T13:46:31.551Z",
+      "modified": "2022-11-22T05:40:22.403Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
@@ -78,15 +78,15 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
       "name": "Fetch Company",
-      "url": "http://localhost:3000/api/user",
+      "url": "http://localhost:3000/api/auth/user",
       "method": "POST",
       "sortNum": 30000,
       "created": "2022-11-18T14:04:30.331Z",
-      "modified": "2022-11-21T06:08:49.607Z",
+      "modified": "2022-11-22T05:43:29.792Z",
       "headers": [
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
         }
       ],
       "params": [],
@@ -97,11 +97,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e30952cd-1c73-471c-966c-4e552643c73d",
       "name": "Login Company",
-      "url": "http://localhost:3000/api/login",
+      "url": "http://localhost:3000/api/auth/login",
       "method": "POST",
       "sortNum": 40000,
       "created": "2022-11-18T13:53:21.106Z",
-      "modified": "2022-11-21T06:08:36.897Z",
+      "modified": "2022-11-22T05:41:32.352Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
@@ -116,11 +116,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
       "name": "Get Student",
-      "url": "http://localhost:3000/api/student?sid=2020UCP1801",
+      "url": "http://localhost:3000/api/auth/student?sid=2020UCP1801",
       "method": "GET",
       "sortNum": 40000,
       "created": "2022-11-18T14:15:50.177Z",
-      "modified": "2022-11-21T06:14:18.018Z",
+      "modified": "2022-11-22T05:44:46.924Z",
       "headers": [],
       "params": [{ "name": "sid", "value": "2020UCP1801", "isPath": false }],
       "tests": []
@@ -130,11 +130,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
       "name": "Create Student",
-      "url": "http://localhost:3000/api/student",
+      "url": "http://localhost:3000/api/auth/student",
       "method": "POST",
       "sortNum": 50000,
       "created": "2022-11-18T14:19:06.831Z",
-      "modified": "2022-11-21T06:12:49.305Z",
+      "modified": "2022-11-22T05:44:12.000Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
@@ -149,15 +149,15 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
       "name": "Fetch Student",
-      "url": "http://localhost:3000/api/user",
+      "url": "http://localhost:3000/api/auth/user",
       "method": "POST",
       "sortNum": 60000,
       "created": "2022-11-21T05:58:10.092Z",
-      "modified": "2022-11-21T06:14:50.249Z",
+      "modified": "2022-11-22T05:45:07.453Z",
       "headers": [
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjE3MDA3ZGUwODA0ZmJkMmZmNjE0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDExMjgzfQ.UGad1Q0pE0zLGJFWUEE_0LiAz1tonkPgilS6UMgj83M"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYxYWQ3Yjg5NmNkYzJmYTExMDA0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDk1ODk4fQ.NIduP_4jOeemwFbpN6Qb1l-IzhRSzoawC2tftQ0HtYU"
         }
       ],
       "params": [],
@@ -168,16 +168,16 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Create Intern Post",
-      "url": "http://localhost:3000/api/internPost",
+      "url": "http://localhost:3000/api/posting/internPost",
       "method": "POST",
       "sortNum": 60000,
       "created": "2022-11-21T06:36:34.422Z",
-      "modified": "2022-11-22T05:32:42.906Z",
+      "modified": "2022-11-22T05:50:45.469Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
         }
       ],
       "params": [],
@@ -193,11 +193,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "e8dda202-0bb9-4804-bb7c-3297091b8461",
       "name": "Login Student",
-      "url": "http://localhost:3000/api/login",
+      "url": "http://localhost:3000/api/auth/login",
       "method": "POST",
       "sortNum": 70000,
       "created": "2022-11-21T05:58:17.615Z",
-      "modified": "2022-11-21T06:14:41.984Z",
+      "modified": "2022-11-22T05:44:57.450Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
@@ -212,16 +212,16 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Get Intern Post",
-      "url": "http://localhost:3000/api/internPost?internId=637b1e557de0804fbd2ff620",
+      "url": "http://localhost:3000/api/posting/internPost?internId=637c635215cbf4f00f698d71",
       "method": "GET",
       "sortNum": 70000,
       "created": "2022-11-21T06:47:53.894Z",
-      "modified": "2022-11-21T06:49:17.314Z",
+      "modified": "2022-11-22T05:52:38.943Z",
       "headers": [],
       "params": [
         {
           "name": "internId",
-          "value": "637b1e557de0804fbd2ff620",
+          "value": "637c635215cbf4f00f698d71",
           "isPath": false
         }
       ],
@@ -232,16 +232,16 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Create Job Post",
-      "url": "http://localhost:3000/api/jobPost",
+      "url": "http://localhost:3000/api/posting/jobPost",
       "method": "POST",
       "sortNum": 80000,
       "created": "2022-11-21T06:58:48.797Z",
-      "modified": "2022-11-21T06:59:35.741Z",
+      "modified": "2022-11-22T05:50:56.912Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
         }
       ],
       "params": [],
@@ -257,11 +257,11 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "Login",
-      "url": "http://localhost:3000/api/login",
+      "url": "http://localhost:3000/api/auth/login",
       "method": "POST",
       "sortNum": 80000,
       "created": "2022-11-21T07:11:24.933Z",
-      "modified": "2022-11-21T07:17:32.638Z",
+      "modified": "2022-11-22T05:47:10.155Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
@@ -276,16 +276,16 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Get Job Post",
-      "url": "http://localhost:3000/api/jobPost?jobId=637b21df7de0804fbd2ff62e",
+      "url": "http://localhost:3000/api/posting/jobPost?jobId=637c6378523d61a19f5ed064",
       "method": "GET",
       "sortNum": 90000,
       "created": "2022-11-21T07:00:17.075Z",
-      "modified": "2022-11-21T07:00:49.321Z",
+      "modified": "2022-11-22T05:52:53.372Z",
       "headers": [],
       "params": [
         {
           "name": "jobId",
-          "value": "637b21df7de0804fbd2ff62e",
+          "value": "637c6378523d61a19f5ed064",
           "isPath": false
         }
       ],
@@ -296,15 +296,15 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "Fetch Admin",
-      "url": "http://localhost:3000/api/user",
+      "url": "http://localhost:3000/api/auth/user",
       "method": "POST",
       "sortNum": 90000,
       "created": "2022-11-21T07:17:47.806Z",
-      "modified": "2022-11-21T07:18:32.727Z",
+      "modified": "2022-11-22T05:48:43.416Z",
       "headers": [
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYyMWJkNGEzZDdhMmNlNmY4NzY4IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTA5NjExMX0.rrdZpnq4NpQtvBe0oqLdfPTGyKZ7nz0uvNRMH4Q5AUc"
         }
       ],
       "params": [],
@@ -315,21 +315,21 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
       "name": "Close Posting",
-      "url": "http://localhost:3000/api/closePost?postingId=637b21df7de0804fbd2ff62c",
+      "url": "http://localhost:3000/api/posting/closePost?postingId=637c6378523d61a19f5ed061",
       "method": "PUT",
       "sortNum": 100000,
       "created": "2022-11-21T07:27:50.240Z",
-      "modified": "2022-11-21T07:31:05.257Z",
+      "modified": "2022-11-22T05:53:30.454Z",
       "headers": [
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3NzhhZDFkZTFiMGZkYTA3ZTNlOTIxIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDEwOTE4fQ.SIfOgL3CFrAH4rmO6MXyd4pcyZzPPgoENBe3bWnt_gU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
         }
       ],
       "params": [
         {
           "name": "postingId",
-          "value": "637b21df7de0804fbd2ff62c",
+          "value": "637c6378523d61a19f5ed061",
           "isPath": false
         }
       ],
@@ -340,22 +340,22 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "Ban Student",
-      "url": "http://localhost:3000/api/ban",
+      "url": "http://localhost:3000/api/admin/ban",
       "method": "PUT",
       "sortNum": 100000,
       "created": "2022-11-22T05:27:45.161Z",
-      "modified": "2022-11-22T05:29:39.834Z",
+      "modified": "2022-11-22T05:49:14.678Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYyMWJkNGEzZDdhMmNlNmY4NzY4IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTA5NjExMX0.rrdZpnq4NpQtvBe0oqLdfPTGyKZ7nz0uvNRMH4Q5AUc"
         }
       ],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"id\": \"637b17007de0804fbd2ff614\",\n  \"type\": \"Student\"\n}",
+        "raw": "{\n  \"id\": \"637c61ad7b896cdc2fa11004\",\n  \"type\": \"Student\"\n}",
         "form": []
       },
       "tests": []
@@ -365,22 +365,22 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "UnBan Student",
-      "url": "http://localhost:3000/api/unban",
+      "url": "http://localhost:3000/api/admin/unban",
       "method": "PUT",
       "sortNum": 105000,
       "created": "2022-11-22T05:30:04.503Z",
-      "modified": "2022-11-22T05:30:40.719Z",
+      "modified": "2022-11-22T05:49:34.263Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYyMWJkNGEzZDdhMmNlNmY4NzY4IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTA5NjExMX0.rrdZpnq4NpQtvBe0oqLdfPTGyKZ7nz0uvNRMH4Q5AUc"
         }
       ],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"id\": \"637b17007de0804fbd2ff614\",\n  \"type\": \"Student\"\n}",
+        "raw": "{\n  \"id\": \"637c61ad7b896cdc2fa11004\",\n  \"type\": \"Student\"\n}",
         "form": []
       },
       "tests": []
@@ -390,22 +390,22 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "Ban Company",
-      "url": "http://localhost:3000/api/ban",
+      "url": "http://localhost:3000/api/admin/ban",
       "method": "PUT",
       "sortNum": 110000,
       "created": "2022-11-22T05:23:02.364Z",
-      "modified": "2022-11-22T05:28:10.695Z",
+      "modified": "2022-11-22T05:50:08.637Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYyMWJkNGEzZDdhMmNlNmY4NzY4IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTA5NjExMX0.rrdZpnq4NpQtvBe0oqLdfPTGyKZ7nz0uvNRMH4Q5AUc"
         }
       ],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"id\": \"63778ad1de1b0fda07e3e921\",\n  \"type\": \"Company\"\n}",
+        "raw": "{\n  \"id\": \"637c60cb0d9cb5798388edcc\",\n  \"type\": \"Company\"\n}",
         "form": []
       },
       "tests": []
@@ -415,22 +415,22 @@
       "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
       "containerId": "cb813269-731d-4a8e-b155-1622c2bcd602",
       "name": "UnBan Company",
-      "url": "http://localhost:3000/api/unban",
+      "url": "http://localhost:3000/api/admin/unban",
       "method": "PUT",
       "sortNum": 115000,
       "created": "2022-11-22T05:28:53.465Z",
-      "modified": "2022-11-22T05:29:54.246Z",
+      "modified": "2022-11-22T05:51:07.303Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YjI0NGU5YTI2ZTliZmQ5NTI2MGY2IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTAxNTA1M30.TFlb-PRg4eEzp625Xw-cNggVGT14d_JoIIYDHVgZCfU"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYyMWJkNGEzZDdhMmNlNmY4NzY4IiwidHlwZSI6IkFkbWluIn0sImlhdCI6MTY2OTA5NjExMX0.rrdZpnq4NpQtvBe0oqLdfPTGyKZ7nz0uvNRMH4Q5AUc"
         }
       ],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"id\": \"63778ad1de1b0fda07e3e921\",\n  \"type\": \"Company\"\n}",
+        "raw": "{\n  \"id\": \"637c60cb0d9cb5798388edcc\",\n  \"type\": \"Company\"\n}",
         "form": []
       },
       "tests": []

@@ -1,7 +1,7 @@
-import { AdminModel } from "../../models";
-import { connectToDB, fetchUser } from "../../middlewares";
-import { userTypes, modelTypes } from "../../lib/types";
-import router from "../../lib/router";
+import { AdminModel } from "../../../models";
+import { connectToDB, fetchUser } from "../../../middlewares";
+import { userTypes, modelTypes } from "../../../lib/types";
+import router from "../../../lib/router";
 
 export default router
     .all(connectToDB)
@@ -29,7 +29,7 @@ export default router
 
             if (user) {
                 user = await modelTypes[type].findByIdAndUpdate(id,
-                    { $set: { isBanned: false } },
+                    { $set: { isBanned: true } },
                     { new: true },
                 );
                 return res.json(user);

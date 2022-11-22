@@ -1,10 +1,10 @@
-import { StudentModel } from "../../models";
-import { userTypes } from "../../lib/types";
-import { connectToDB, initValidation } from "../../middlewares";
-import { studentValidator } from "../../lib/validators";
+import { CompanyModel } from "../../../models";
+import { userTypes } from "../../../lib/types";
+import { connectToDB, initValidation } from "../../../middlewares";
+import { companyValidator } from "../../../lib/validators";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import router from "../../lib/router";
+import router from "../../../lib/router";
 
 const JWT_SECRET = process.env.JWT_SECRET || "NOT_SO_SECRET";
 
@@ -12,18 +12,18 @@ export default router
     .all(connectToDB)
     .get(async (req, res) => {
         try {
-            const { sid } = req.query;
-            if (sid) {
-                const student = await StudentModel.find({ sid }).select("-password");
-                if (student) return res.send(student);
+            const { companyId } = req.query;
+            if (companyId) {
+                const company = await CompanyModel.findById(companyId).select("-password");
+                if (company) return res.send(company);
                 else return res.status(400).json({
                     error: "Arguments Error",
-                    message: "No student found with given id"
+                    message: "No company found with given id"
                 });
             } else {
                 return res.status(400).json({
                     error: "Arguments Error",
-                    message: "Student Id not given"
+                    message: "Company Id not given"
                 });
             }
         } catch (e) {
@@ -33,19 +33,16 @@ export default router
             });
         }
     })
-    .post(initValidation(studentValidator), async (req, res) => {
+    .post(initValidation(companyValidator), async (req, res) => {
         try {
-            const { name, sid, password,
-                degree, branch, admissionYear,
-                dob, skills, cgpa
-            } = req.body;
+            const { name, email, password, type, headOffice } = req.body;
 
             // Getting company if already exists
-            let student = await StudentModel.findOne({ sid });
-            if (student) {
+            let company = await CompanyModel.findOne({ email });
+            if (company) {
                 res.status(400).json({
                     error: "Validation Error",
-                    message: "Student already exists with this id",
+                    message: "Company already exists with this email id",
                 })
             }
 
@@ -54,17 +51,17 @@ export default router
             const secPass = await bcrypt.hash(password, salt);
 
             // Creating a new Company
-            student = await StudentModel.create({
+            company = await CompanyModel.create({
                 name,
-                sid,
+                email,
                 password: secPass,
-                degree, branch, admissionYear,
-                dob, skills, cgpa
+                type,
+                headOffice
             });
 
             // Generating Token
             const data = {
-                user: { id: student.id, type: userTypes.student },
+                user: { id: company.id, type: userTypes.company },
             };
             const authToken = jwt.sign(data, JWT_SECRET);
 
