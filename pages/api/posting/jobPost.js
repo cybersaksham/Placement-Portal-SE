@@ -13,12 +13,15 @@ export default router
                 const job = await JobPostModel.findById(jobId);
                 if (job) {
                     JobPostModel.findById(jobId)
-                        .populate("posting")
+                        .populate({
+                            path: "posting",
+                            populate: { path: "company", select: "-password" }
+                        })
                         .exec((err, post) => {
                             if (err) {
                                 return res.status(400).json({
                                     error: "Unknown Error",
-                                    message: e.message
+                                    message: err.message
                                 });
                             }
                             else {
@@ -87,12 +90,15 @@ export default router
                 })
 
                 JobPostModel.findById(jobPost.id)
-                    .populate("posting")
+                    .populate({
+                        path: "posting",
+                        populate: { path: "company", select: "-password" }
+                    })
                     .exec((err, post) => {
                         if (err) {
                             return res.status(400).json({
                                 error: "Unknown Error",
-                                message: e.message
+                                message: err.message
                             });
                         } else {
                             return res.json(post);

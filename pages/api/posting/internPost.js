@@ -13,12 +13,15 @@ export default router
                 const intern = await InternPostModel.findById(internId);
                 if (intern) {
                     InternPostModel.findById(internId)
-                        .populate("posting")
+                        .populate({
+                            path: "posting",
+                            populate: { path: "company", select: "-password" }
+                        })
                         .exec((err, post) => {
                             if (err) {
                                 return res.status(400).json({
                                     error: "Unknown Error",
-                                    message: e.message
+                                    message: err.message
                                 });
                             }
                             else {
@@ -87,12 +90,15 @@ export default router
                 })
 
                 InternPostModel.findById(internPost.id)
-                    .populate("posting")
+                    .populate({
+                        path: "posting",
+                        populate: { path: "company", select: "-password" }
+                    })
                     .exec((err, post) => {
                         if (err) {
                             return res.status(400).json({
                                 error: "Unknown Error",
-                                message: e.message
+                                message: err.message
                             });
                         } else {
                             return res.json(post);

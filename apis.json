@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Placement-Portal",
-  "dateExported": "2022-11-22T05:53:50.824Z",
+  "dateExported": "2022-11-22T07:08:24.694Z",
   "version": "1.1",
   "folders": [
     {
@@ -31,6 +31,13 @@
       "containerId": "",
       "created": "2022-11-21T06:36:24.500Z",
       "sortNum": 30000
+    },
+    {
+      "_id": "ad3583dd-9248-4406-bf49-e9ba03fd0f76",
+      "name": "Application",
+      "containerId": "",
+      "created": "2022-11-22T06:06:56.069Z",
+      "sortNum": 50000
     }
   ],
   "requests": [
@@ -63,12 +70,12 @@
       "method": "POST",
       "sortNum": 30000,
       "created": "2022-11-18T13:36:14.779Z",
-      "modified": "2022-11-22T05:40:22.403Z",
+      "modified": "2022-11-22T06:45:59.664Z",
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"name\": \"Atlassian\",\n  \"email\": \"atlassian@gmail.com\",\n  \"password\": \"Atlas123\",\n  \"type\": \"Unicorn\",\n  \"headOffice\": \"Australia\"\n}",
+        "raw": "{\n  \"name\": \"DeShaw\",\n  \"email\": \"deshaw@gmail.com\",\n  \"password\": \"deshaw123\",\n  \"type\": \"Unicorn\",\n  \"headOffice\": \"America\"\n}",
         "form": []
       },
       "tests": []
@@ -172,18 +179,18 @@
       "method": "POST",
       "sortNum": 60000,
       "created": "2022-11-21T06:36:34.422Z",
-      "modified": "2022-11-22T05:50:45.469Z",
+      "modified": "2022-11-22T06:46:27.795Z",
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
         {
           "name": "auth-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYwY2IwZDljYjU3OTgzODhlZGNjIiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk1Nzk1fQ.9XkbvUVZ2aU6FdZ5l2umg46DYYBdQnZLklPDZYnffhI"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzcwMmE1MjNkNjFhMTlmNWVkMGM0IiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk5NTYyfQ.q0bx7TxQU-rO8WfhKxCO3Vc0pqn3gbmSEcUi57RTax8"
         }
       ],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"role\": \"SDE\",\n  \"branches\": [\"CSE\", \"ECE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"100K\",\n  \"duration\": \"2 mos\"\n}",
+        "raw": "{\n  \"role\": \"SWE\",\n  \"branches\": [\"CSE\"],\n  \"location\": \"Bangalore, IN\",\n  \"stipend\": \"200K\",\n  \"duration\": \"2 mos\"\n}",
         "form": []
       },
       "tests": []
@@ -433,6 +440,116 @@
         "raw": "{\n  \"id\": \"637c60cb0d9cb5798388edcc\",\n  \"type\": \"Company\"\n}",
         "form": []
       },
+      "tests": []
+    },
+    {
+      "_id": "013f3cad-5a00-46a2-8a61-80788ab15fbe",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "ad3583dd-9248-4406-bf49-e9ba03fd0f76",
+      "name": "Apply For Job",
+      "url": "http://localhost:3000/api/application/apply",
+      "method": "POST",
+      "sortNum": 120000,
+      "created": "2022-11-22T06:07:06.711Z",
+      "modified": "2022-11-22T06:26:40.009Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYxYWQ3Yjg5NmNkYzJmYTExMDA0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDk1ODk4fQ.NIduP_4jOeemwFbpN6Qb1l-IzhRSzoawC2tftQ0HtYU"
+        },
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"posting\": \"637c6378523d61a19f5ed061\",\n  \"resume\": \"https://www.cybersaksham.co.in/Resume_Saksham.pdf\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "38318602-e2c8-479f-884e-43ad531ca524",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "ad3583dd-9248-4406-bf49-e9ba03fd0f76",
+      "name": "Get Application",
+      "url": "http://localhost:3000/api/application/apply?applicationId=637c6830523d61a19f5ed07f",
+      "method": "GET",
+      "sortNum": 130000,
+      "created": "2022-11-22T06:17:21.786Z",
+      "modified": "2022-11-22T06:18:02.730Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "applicationId",
+          "value": "637c6830523d61a19f5ed07f",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "d05cc52c-8b3f-4a42-8cc7-fb76043bee0e",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "b83bd943-10cd-4388-b4e8-399db844e45c",
+      "name": "Fetch By Company",
+      "url": "http://localhost:3000/api/posting/byCompany?companyId=637c60cb0d9cb5798388edcc&type=Job",
+      "method": "GET",
+      "sortNum": 140000,
+      "created": "2022-11-22T06:37:48.738Z",
+      "modified": "2022-11-22T06:47:26.049Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "companyId",
+          "value": "637c60cb0d9cb5798388edcc",
+          "isPath": false
+        },
+        { "name": "type", "value": "Job", "isPath": false }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "af8b1fe3-8882-476e-b7db-da72c7730640",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "ad3583dd-9248-4406-bf49-e9ba03fd0f76",
+      "name": "Get By Posting",
+      "url": "http://localhost:3000/api/application/byPosting?postingId=637c635215cbf4f00f698d6f",
+      "method": "GET",
+      "sortNum": 150000,
+      "created": "2022-11-22T06:58:26.902Z",
+      "modified": "2022-11-22T07:04:26.881Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzcwMmE1MjNkNjFhMTlmNWVkMGM0IiwidHlwZSI6IkNvbXBhbnkifSwiaWF0IjoxNjY5MDk5NTYyfQ.q0bx7TxQU-rO8WfhKxCO3Vc0pqn3gbmSEcUi57RTax8"
+        }
+      ],
+      "params": [
+        {
+          "name": "postingId",
+          "value": "637c635215cbf4f00f698d6f",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "_id": "2bc266fb-1fe9-4585-a757-cb7fc302be07",
+      "colId": "c46a5166-7cdc-4dbd-a871-47786aee17ff",
+      "containerId": "ad3583dd-9248-4406-bf49-e9ba03fd0f76",
+      "name": "Get By Student",
+      "url": "http://localhost:3000/api/application/byStudent",
+      "method": "GET",
+      "sortNum": 160000,
+      "created": "2022-11-22T07:06:46.340Z",
+      "modified": "2022-11-22T07:07:22.221Z",
+      "headers": [
+        {
+          "name": "auth-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzYxYWQ3Yjg5NmNkYzJmYTExMDA0IiwidHlwZSI6IlN0dWRlbnQifSwiaWF0IjoxNjY5MDk1ODUzfQ.bgToNB6mVPkXyG27Ee5vynQ83O3mIdPejj0NgX8nS60"
+        }
+      ],
+      "params": [],
       "tests": []
     }
   ]
