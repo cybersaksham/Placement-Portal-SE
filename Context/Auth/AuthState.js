@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import useRequest from "../../Hooks/Request";
 import AuthContext from "./AuthContext";
 
 const AuthState = (props) => {
   const HOST = "/api/auth";
 
+  const [currentUser, setCurrentUser] = useState(null);
   const checkRequest = useRequest();
   const router = useRouter();
 
@@ -49,7 +50,9 @@ const AuthState = (props) => {
       response.status,
       json.error + ": " + json.message,
       null,
-      () => { }
+      () => {
+        setCurrentUser(json);
+      }
     );
   };
 
@@ -142,7 +145,8 @@ const AuthState = (props) => {
     <AuthContext.Provider value={{
       loginUser, fetchUser,
       getCompany, registerCompany,
-      getStudent, registerStudent
+      getStudent, registerStudent,
+      currentUser
     }}>
       {props.children}
     </AuthContext.Provider>

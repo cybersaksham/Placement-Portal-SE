@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const InternPostSchema = new mongoose.Schema({
     posting: { type: mongoose.Schema.Types.ObjectId, ref: "posting", require: true },
-    stipend: { type: String, require: true },
+    stipend: { type: Number, require: true },
     duration: { type: String, require: true },
 });
 

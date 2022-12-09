@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <AlertState>
       <AuthState>
-        {router.pathname !== "/auth/login" && router.pathname != "/auth/register" && <Navbar />}
+        <Navbar />
         <Alert />
         <Component {...pageProps} />
       </AuthState>

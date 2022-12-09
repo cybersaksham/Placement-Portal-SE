@@ -9,8 +9,9 @@ export default router
             // Finding User
             const userId = req.user.id;
             const type = req.user.type;
-            const user = await modelTypes[type].findById(userId).select("-password");
-            return res.send(user);
+            let user = await modelTypes[type].findById(userId).select("-password").lean();
+            user.usertype = type;
+            return res.json(user);
         } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",

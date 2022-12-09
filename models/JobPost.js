@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const JobPostSchema = new mongoose.Schema({
     posting: { type: mongoose.Schema.Types.ObjectId, ref: "posting", require: true },
-    ctc: { type: String, require: true },
+    ctc: { type: Number, require: true },
     shares: { type: String },
 });
 
