@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
+import Link from 'next/link';
 import { userTypes } from '../../lib/frontendTypes'
 import AuthContext from '../../Context/Auth/AuthContext';
 
@@ -125,7 +126,7 @@ const login = () => {
                 <div className="mb-3 row">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-8">
-                        <p>Don't have an account? <a href="/auth/register">Register</a></p>
+                        <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                     </div>
                 </div>
             </fieldset>

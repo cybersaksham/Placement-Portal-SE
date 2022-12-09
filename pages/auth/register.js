@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
+import Link from 'next/link';
 import { userTypes } from '../../lib/frontendTypes'
 import AuthContext from '../../Context/Auth/AuthContext';
 
@@ -283,7 +284,7 @@ const register = () => {
                 <div className="mb-3 row">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-8">
-                        <p>Already have an account? <a href="/auth/login">Login</a></p>
+                        <p>Already have an account? <Link href="/auth/login">Login</Link></p>
                     </div>
                 </div>
             </fieldset>
