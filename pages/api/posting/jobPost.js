@@ -74,13 +74,14 @@ export default router
                 }
 
                 const { role, branches,
-                    minCGPA, location, joiningDate,
+                    minCGPA, location, graduationYear, joiningDate,
                     ctc, shares } = req.body;
 
                 // Creating a new Posting
                 let posting = await PostingModel.create({
                     company: userId, role, branches,
-                    minCGPA, location, joiningDate, type: postTypes.job
+                    minCGPA, location, graduationYear: Number(graduationYear), joiningDate,
+                    type: postTypes.job
                 });
 
                 // Creating an Job Posting
