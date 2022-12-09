@@ -111,7 +111,7 @@ const AuthState = (props) => {
 
   // Registering Student
   const registerStudent = async ({ name, sid, password, cPassword,
-    degree, branch, admissionYear,
+    degree, branch, graduationYear,
     dob, skills, cgpa
   }) => {
     if (password === cPassword) {
@@ -122,7 +122,7 @@ const AuthState = (props) => {
         },
         body: JSON.stringify({
           name, sid, password,
-          degree, branch, admissionYear,
+          degree, branch, graduationYear,
           dob, skills, cgpa
         }),
       });

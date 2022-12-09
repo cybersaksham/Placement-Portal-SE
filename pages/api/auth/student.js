@@ -36,7 +36,7 @@ export default router
     .post(initValidation(studentValidator), async (req, res) => {
         try {
             const { name, sid, password,
-                degree, branch, admissionYear,
+                degree, branch, graduationYear,
                 dob, skills, cgpa
             } = req.body;
 
@@ -58,7 +58,7 @@ export default router
                 name,
                 sid,
                 password: secPass,
-                degree, branch, admissionYear,
+                degree, branch, graduationYear,
                 dob, skills, cgpa
             });
 

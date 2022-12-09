@@ -14,7 +14,7 @@ const register = () => {
     // For Student
     const degreeRef = useRef(null);
     const branchRef = useRef(null);
-    const admissionYearRef = useRef(null);
+    const graduationYearRef = useRef(null);
     const dobRef = useRef(null);
     const skillsRef = useRef(null);
     const cgpaRef = useRef(null);
@@ -49,13 +49,13 @@ const register = () => {
         const cPassword = cPasswordRef.current.value;
         const degree = degreeRef.current.value;
         const branch = branchRef.current.value;
-        const admissionYear = admissionYearRef.current.value;
+        const graduationYear = graduationYearRef.current.value;
         const dob = dobRef.current.value;
         const skills = skillsRef.current.value.split(" ");
         const cgpa = cgpaRef.current.value;
         await registerStudent({
             name, sid, password, cPassword, degree, branch,
-            admissionYear, dob, skills, cgpa
+            graduationYear, dob, skills, cgpa
         });
         setIsDisabled(false);
     }
@@ -196,7 +196,7 @@ const register = () => {
                                 className="form-control"
                                 id="admYear"
                                 placeholder="Admission Year"
-                                ref={admissionYearRef}
+                                ref={graduationYearRef}
                             />
                         </div>
                         <label htmlFor="dob" className="col-sm-1 col-form-label">
