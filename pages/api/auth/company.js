@@ -15,7 +15,7 @@ export default router
             const { companyId } = req.query;
             if (companyId) {
                 const company = await CompanyModel.findById(companyId).select("-password");
-                if (company) return res.send(company);
+                if (company) return res.json(company);
                 else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No company found with given id"
@@ -66,8 +66,7 @@ export default router
             const authToken = jwt.sign(data, JWT_SECRET);
 
             return res.json({ authToken });
-        }
-        catch (e) {
+        } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",
                 message: e.message

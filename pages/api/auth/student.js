@@ -15,7 +15,7 @@ export default router
             const { sid } = req.query;
             if (sid) {
                 const student = await StudentModel.find({ sid }).select("-password");
-                if (student) return res.send(student);
+                if (student) return res.json(student);
                 else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No student found with given id"
@@ -40,7 +40,7 @@ export default router
                 dob, skills, cgpa
             } = req.body;
 
-            // Getting company if already exists
+            // Getting student if already exists
             let student = await StudentModel.findOne({ sid });
             if (student) {
                 res.status(400).json({
@@ -53,7 +53,7 @@ export default router
             const salt = await bcrypt.genSalt(10);
             const secPass = await bcrypt.hash(password, salt);
 
-            // Creating a new Company
+            // Creating a new Student
             student = await StudentModel.create({
                 name,
                 sid,
@@ -69,8 +69,7 @@ export default router
             const authToken = jwt.sign(data, JWT_SECRET);
 
             return res.json({ authToken });
-        }
-        catch (e) {
+        } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",
                 message: e.message

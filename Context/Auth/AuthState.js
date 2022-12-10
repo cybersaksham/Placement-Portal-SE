@@ -7,6 +7,8 @@ const AuthState = (props) => {
   const HOST = "/api/auth";
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [company, setCompany] = useState(null);
+  const [student, setStudent] = useState(null);
   const checkRequest = useRequest();
   const router = useRouter();
 
@@ -66,7 +68,9 @@ const AuthState = (props) => {
       response.status,
       json.error + ": " + json.message,
       null,
-      () => { }
+      () => {
+        setCompany(json);
+      }
     );
   };
 
@@ -105,7 +109,9 @@ const AuthState = (props) => {
       response.status,
       json.error + ": " + json.message,
       null,
-      () => { }
+      () => {
+        setStudent(json);
+      }
     );
   };
 
@@ -146,7 +152,7 @@ const AuthState = (props) => {
       loginUser, fetchUser,
       getCompany, registerCompany,
       getStudent, registerStudent,
-      currentUser
+      currentUser, company, student
     }}>
       {props.children}
     </AuthContext.Provider>
