@@ -1,4 +1,4 @@
-import { JobPostModel, PlacementModel, PostingModel, StudentModel } from "../../models";
+import { StudentModel } from "../../models";
 import { connectToDB } from "../../middlewares";
 import { branchTypes, hiringTypes, modelTypes, salaryTypes, salaryRepresentations } from "../../lib/types";
 import router from "../../lib/router";
