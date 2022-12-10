@@ -25,17 +25,22 @@ export default router
             }
 
             const { id, type } = req.body;
-            let user = await modelTypes[type].findById(id);
+            if (type === userTypes.company || type === userTypes.student) {
+                let user = await modelTypes[type].findById(id);
 
-            if (user) {
-                user = await modelTypes[type].findByIdAndUpdate(id,
-                    { $set: { isBanned: true } },
-                    { new: true },
-                );
-                return res.json(user);
+                if (user) {
+                    user = await modelTypes[type].findByIdAndUpdate(id,
+                        { $set: { isBanned: true } },
+                        { new: true },
+                    );
+                    return res.json(user);
+                } else return res.status(400).json({
+                    error: "Arguments Error",
+                    message: "No user found with given id"
+                });
             } else return res.status(400).json({
                 error: "Arguments Error",
-                message: "No user found with given id"
+                message: "Cannot ban given type of user"
             });
         } catch (e) {
             return res.status(500).json({
