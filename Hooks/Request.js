@@ -9,7 +9,7 @@ const useRequest = () => {
       callback();
       if (success) showAlert("success", success);
     } else {
-      showAlert("danger", error);
+      if (error) showAlert("danger", error);
     }
   };
 

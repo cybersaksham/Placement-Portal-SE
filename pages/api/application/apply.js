@@ -1,5 +1,5 @@
 import { StudentModel, ApplicationModel, PostingModel } from "../../../models";
-import { applicationStatus, userTypes } from "../../../lib/types";
+import { applicationStatus, hiringTypes, modelTypes, userTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -11,23 +11,18 @@ export default router
             if (applicationId) {
                 const application = await ApplicationModel.findById(applicationId);
                 if (application) {
-                    ApplicationModel.findById(applicationId)
+                    let data = await ApplicationModel.findById(applicationId)
                         .populate({
                             path: "posting",
                             populate: { path: "company", select: "-password" }
                         })
                         .populate({ path: "student", select: "-password" })
-                        .exec((err, data) => {
-                            if (err) {
-                                return res.status(400).json({
-                                    error: "Unknown Error",
-                                    message: err.message
-                                });
-                            }
-                            else {
-                                return res.json(data);
-                            }
-                        });
+                        .lean();
+                    data.company = data.posting.company;
+                    delete data.posting.company;
+                    let moreDetails = await modelTypes[data.posting.type].findById(data.posting._id);
+                    data.posting.details = moreDetails;
+                    return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No application found with given id"
@@ -75,16 +70,24 @@ export default router
             const { posting, resume } = req.body;
 
             if (posting) {
-                let applyData = await ApplicationModel.findOne({
-                    posting, student: userId
-                })
-                if (applyData) return res.status(400).json({
-                    error: "Duplication Error",
-                    message: "You have already applied to this post"
-                });
-
                 let post = await PostingModel.findById(posting);
                 if (post && !post.isClosed) {
+                    // Checking if already applied
+                    let applyData = await ApplicationModel.findOne({
+                        posting, student: userId
+                    })
+                    if (applyData) return res.status(400).json({
+                        error: "Duplication Error",
+                        message: "You have already applied to this post"
+                    });
+
+                    // Checking if already placed
+                    let placedData = await hiringTypes[post.type].find({ student: userId });
+                    if (placedData) return res.status(400).json({
+                        error: "Policy Error",
+                        message: "You are already secured one place for this type of job"
+                    });
+
                     // Creating a new Application
                     let application = await ApplicationModel.create({
                         posting, student: userId, resume, status: applicationStatus.applied

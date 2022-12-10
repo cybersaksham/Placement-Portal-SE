@@ -26,20 +26,14 @@ export default router
                 });
             }
 
-            ApplicationModel.find({ student: userId })
+            let data = await ApplicationModel.find({ student: userId })
                 .populate({
                     path: "posting",
                     populate: { path: "company", select: "-password" }
-                })
-                .exec((err, data) => {
-                    if (err) {
-                        return res.status(400).json({
-                            error: "Unknown Error",
-                            message: err.message
-                        });
-                    }
-                    else return res.send(data);
-                });
+                }).lean();
+            data.company = data.posting.company;
+            delete data.posting.company;
+            return res.send(data);
         } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",

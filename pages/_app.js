@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import AlertState from '../Context/Alert/AlertState'
 import AuthState from '../Context/Auth/AuthState'
 import AdminState from "../Context/Admin/AdminState"
+import ApplicationState from "../Context/Application/ApplicationState"
 import Alert from '../Components/Alert'
 import Navbar from '../Components/Navbar'
 import { useEffect } from 'react'
@@ -22,9 +23,11 @@ function MyApp({ Component, pageProps }) {
     <AlertState>
       <AuthState>
         <AdminState>
-          <Navbar />
-          <Alert />
-          <Component {...pageProps} />
+          <ApplicationState>
+            <Navbar />
+            <Alert />
+            <Component {...pageProps} />
+          </ApplicationState>
         </AdminState>
       </AuthState>
     </AlertState>

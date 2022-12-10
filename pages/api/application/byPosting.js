@@ -31,28 +31,18 @@ export default router
             if (postingId) {
                 const posting = await PostingModel.findById(postingId);
                 if (posting) {
-                    PostingModel.findById(postingId)
+                    let data = await PostingModel.findById(postingId)
                         .populate({ path: "company", select: "-password" })
-                        .exec((err, data) => {
-                            if (data.company.id != userId) {
-                                return res.status(400).json({
-                                    error: "Arguments Error",
-                                    message: "No posting found with given id"
-                                });
-                            }
+                    if (data.company.id != userId) {
+                        return res.status(400).json({
+                            error: "Arguments Error",
+                            message: "No posting found with given id"
                         });
+                    }
 
-                    ApplicationModel.find({ posting: postingId })
+                    data = await ApplicationModel.find({ posting: postingId })
                         .populate({ path: "student", select: "-password" })
-                        .exec((err, data) => {
-                            if (err) {
-                                return res.status(400).json({
-                                    error: "Unknown Error",
-                                    message: err.message
-                                });
-                            }
-                            else return res.send(data);
-                        });
+                    return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No posting found with given id"
