@@ -1,15 +1,9 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../Context/Auth/AuthContext';
 
 const Navbar = () => {
-    const router = useRouter();
-    const [token, setToken] = useState(null);
-
-    useEffect(() => {
-        setToken(JSON.parse(localStorage.getItem("token")));
-    }, [])
-
+    const { currentUser, logoutUser } = useContext(AuthContext);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,12 +31,9 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             {
-                                token ?
+                                currentUser ?
                                     <span className="nav-link" style={{ cursor: "pointer" }}
-                                        onClick={() => {
-                                            localStorage.removeItem("token");
-                                            router.push("/auth/login");
-                                        }}>Logout</span>
+                                        onClick={logoutUser}>Logout</span>
                                     : <Link className="nav-link" href="/auth/login">Login</Link>
                             }
                         </li>

@@ -33,11 +33,24 @@ const AuthState = (props) => {
     );
   };
 
+  // Logging Out
+  const logoutUser = async () => {
+    localStorage.removeItem("token");
+    checkRequest(
+      200,
+      null,
+      "Logged out successfully",
+      async () => {
+        router.push("/auth/login");
+      }
+    );
+  };
+
   // Fetching
   const fetchUser = async () => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      setCurrentUser(null);
       return;
     }
     const response = await fetch(HOST + "/user", {
@@ -48,6 +61,7 @@ const AuthState = (props) => {
       }
     });
     const json = await response.json();
+    console.log(token, json);
     checkRequest(
       response.status,
       json.error + ": " + json.message,
@@ -149,7 +163,7 @@ const AuthState = (props) => {
 
   return (
     <AuthContext.Provider value={{
-      loginUser, fetchUser,
+      loginUser, logoutUser, fetchUser,
       getCompany, registerCompany,
       getStudent, registerStudent,
       currentUser, company, student

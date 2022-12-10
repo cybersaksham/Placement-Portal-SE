@@ -13,7 +13,7 @@ const AdminState = (props) => {
   const ban = async ({ id, type }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/ban", {
@@ -37,7 +37,7 @@ const AdminState = (props) => {
   const unban = async ({ id, type }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/unban", {

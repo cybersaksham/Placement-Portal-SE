@@ -31,7 +31,7 @@ const ApplicationState = (props) => {
   const getByPosting = async ({ postingId }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/byPosting?postingId=" + postingId, {
@@ -55,7 +55,7 @@ const ApplicationState = (props) => {
   const getByStudent = async () => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/byStudent", {
@@ -79,7 +79,7 @@ const ApplicationState = (props) => {
   const apply = async ({ posting, resume }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/apply", {

@@ -47,7 +47,7 @@ const PostingState = (props) => {
   const closePosting = async ({ postingId }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/closePost?postingId=" + postingId, {
@@ -89,7 +89,7 @@ const PostingState = (props) => {
     stipend, duration }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/internPost", {
@@ -137,7 +137,7 @@ const PostingState = (props) => {
     ctc, shares }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/jobPost", {

@@ -47,7 +47,7 @@ const HiringState = (props) => {
   const getByStudent = async ({ type }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/byStudent?type=" + type, {
@@ -71,7 +71,7 @@ const HiringState = (props) => {
   const accept = async ({ applicationId }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/accept", {
@@ -95,7 +95,7 @@ const HiringState = (props) => {
   const reject = async ({ applicationId }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     const response = await fetch(HOST + "/reject", {
