@@ -12,22 +12,14 @@ export default router
             if (jobId) {
                 const job = await JobPostModel.findById(jobId);
                 if (job) {
-                    JobPostModel.findById(jobId)
+                    let data = await JobPostModel.findById(jobId)
                         .populate({
                             path: "posting",
                             populate: { path: "company", select: "-password" }
-                        })
-                        .exec((err, post) => {
-                            if (err) {
-                                return res.status(400).json({
-                                    error: "Unknown Error",
-                                    message: err.message
-                                });
-                            }
-                            else {
-                                return res.json(post);
-                            }
-                        });
+                        }).lean();
+                    data.company = data.posting.company;
+                    delete data.posting.company;
+                    return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No job post found with given id"
@@ -90,21 +82,14 @@ export default router
                     ctc, shares
                 })
 
-                JobPostModel.findById(jobPost.id)
+                let data = await JobPostModel.findById(jobPost.id)
                     .populate({
                         path: "posting",
                         populate: { path: "company", select: "-password" }
-                    })
-                    .exec((err, post) => {
-                        if (err) {
-                            return res.status(400).json({
-                                error: "Unknown Error",
-                                message: err.message
-                            });
-                        } else {
-                            return res.json(post);
-                        }
-                    });
+                    }).lean();
+                data.company = data.posting.company;
+                delete data.posting.company;
+                return res.json(data);
             }
             catch (e) {
                 return res.status(500).json({

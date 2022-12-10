@@ -11,25 +11,17 @@ export default router
             if (companyId) {
                 const company = await CompanyModel.findById(companyId);
                 if (company) {
-                    modelTypes[type].find()
+                    let posts = await modelTypes[type].find()
                         .populate({
                             path: "posting",
                             populate: { path: "company", select: "-password" }
-                        })
-                        .exec((err, posts) => {
-                            if (err) {
-                                return res.status(400).json({
-                                    error: "Unknown Error",
-                                    message: err.message
-                                });
-                            }
-                            else {
-                                let newPosts = Array.from(posts).filter(
-                                    el => el.posting.company.id == companyId
-                                );
-                                return res.send(newPosts);
-                            }
-                        });
+                        }).lean();
+                    let data = Array.from(posts).filter(
+                        el => el.posting.company._id == companyId
+                    );
+                    data.company = data.posting.company;
+                    delete data.posting.company;
+                    return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
                     message: "No company found with given id"

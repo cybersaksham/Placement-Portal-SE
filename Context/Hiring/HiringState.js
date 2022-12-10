@@ -117,7 +117,7 @@ const HiringState = (props) => {
 
   return (
     <HiringContext.Provider value={{
-      getByID, getByPosting, getByStudent,
+      getByID, getByPosting, getByStudent, accept, reject,
       currentHiring, hirings
     }}>
       {props.children}

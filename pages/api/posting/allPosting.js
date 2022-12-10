@@ -7,20 +7,14 @@ export default router
     .get(async (req, res) => {
         try {
             const { type } = req.query;
-            modelTypes[type].find()
+            let data = await modelTypes[type].find()
                 .populate({
                     path: "posting",
                     populate: { path: "company", select: "-password" }
-                })
-                .exec((err, posts) => {
-                    if (err) {
-                        return res.status(400).json({
-                            error: "Unknown Error",
-                            message: err.message
-                        });
-                    }
-                    else return res.send(posts);
-                });
+                }).lean();
+            data.company = data.posting.company;
+            delete data.posting.company;
+            return res.json(data);
         } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",
