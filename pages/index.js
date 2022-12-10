@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react"
+import Loader from "../Components/Loader";
 import Stats from "../Components/Stats";
 import StatsContext from "../Context/Stats/StatsContext"
 
@@ -6,11 +7,14 @@ export default function Home() {
   const { getStats, internStats, placementStats } = useContext(StatsContext);
   const [year, setYear] = useState(new Date().getFullYear());
   const [searchedYear, setSearchedYear] = useState(new Date().getFullYear());
+  const [loader, setLoader] = useState(false);
 
-  const searchStats = () => {
+  const searchStats = async () => {
+    setLoader(true);
     setSearchedYear(year);
-    getStats({ year, type: "Intern" });
-    getStats({ year, type: "Job" });
+    await getStats({ year, type: "Intern" });
+    await getStats({ year, type: "Job" });
+    setLoader(false);
   }
 
   useEffect(() => {
@@ -43,8 +47,12 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <Stats placementStats={placementStats} heading={`Placement Statistics ${searchedYear}`} />
-      <Stats placementStats={internStats} heading={`Intern Statistics ${searchedYear}`} />
+      {loader ?
+        <Loader />
+        : <>
+          <Stats placementStats={placementStats} heading={`Placement Statistics ${searchedYear}`} />
+          <Stats placementStats={internStats} heading={`Intern Statistics ${searchedYear}`} />
+        </>}
     </div>
   )
 }
