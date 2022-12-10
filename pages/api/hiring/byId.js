@@ -1,5 +1,4 @@
-import { PostingModel } from "../../../models";
-import { hiringTypes } from "../../../lib/types";
+import { hiringTypes, modelTypes } from "../../../lib/types";
 import { connectToDB } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -7,33 +6,30 @@ export default router
     .all(connectToDB)
     .get(async (req, res) => {
         try {
-            const { postingId } = req.query;
-
-            if (postingId) {
-                const posting = await PostingModel.findById(postingId);
-                if (posting) {
-                    let data = await hiringTypes[posting.type].find({ posting: postingId })
+            const { hiringId, type } = req.query;
+            if (hiringId) {
+                const hiring = await hiringTypes[type].findById(hiringId);
+                if (hiring) {
+                    let data = await hiringTypes[type].findById(hiringId)
                         .populate({
                             path: "posting",
                             populate: { path: "company", select: "-password" }
                         })
                         .populate({ path: "student", select: "-password" })
                         .lean();
-                    Array.from(data).forEach((el, i) => {
-                        let newData = el;
-                        newData.company = newData.posting.company;
-                        delete newData.posting.company;
-                        data[i] = newData;
-                    })
+                    data.company = data.posting.company;
+                    delete data.posting.company;
+                    let moreDetails = await modelTypes[data.posting.type].findById(data.posting._id);
+                    data.posting.details = moreDetails;
                     return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
-                    message: "No posting found with given id"
+                    message: "No hiring found with given id"
                 });
             } else {
                 return res.status(400).json({
                     error: "Arguments Error",
-                    message: "Posting Id not given"
+                    message: "Hiring Id not given"
                 });
             }
         } catch (e) {
@@ -42,4 +38,4 @@ export default router
                 message: e.message
             });
         }
-    })
+    });

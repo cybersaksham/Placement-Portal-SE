@@ -26,21 +26,20 @@ export default router
 
             const { type } = req.query;
 
-            hiringTypes[type].find({ student: userId })
+            let data = await hiringTypes[type].find({ student: userId })
                 .populate({
                     path: "posting",
                     populate: { path: "company", select: "-password" }
                 })
                 .populate({ path: "student", select: "-password" })
-                .exec((err, data) => {
-                    if (err) {
-                        return res.status(400).json({
-                            error: "Unknown Error",
-                            message: err.message
-                        });
-                    }
-                    else return res.send(data);
-                });
+                .lean();
+            Array.from(data).forEach((el, i) => {
+                let newData = el;
+                newData.company = newData.posting.company;
+                delete newData.posting.company;
+                data[i] = newData;
+            })
+            return res.json(data);
         } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",

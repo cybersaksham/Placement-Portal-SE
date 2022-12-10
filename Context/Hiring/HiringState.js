@@ -1,19 +1,19 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import useRequest from "../../Hooks/Request";
-import ApplicationContext from "./ApplicationContext";
+import HiringContext from "./HiringContext";
 
-const ApplicationState = (props) => {
-  const HOST = "/api/application";
+const HiringState = (props) => {
+  const HOST = "/api/hiring";
 
-  const [currentApplication, setCurrentApplication] = useState(null);
-  const [applications, setApplications] = useState([]);
+  const [currentHiring, setCurrentHiring] = useState(null);
+  const [hirings, setHirings] = useState([]);
   const checkRequest = useRequest();
   const router = useRouter();
 
-  // Get Application by ID
-  const getByID = async ({ id }) => {
-    const response = await fetch(HOST + "/apply?applicationId=" + id, {
+  // Get Hiring by ID
+  const getByID = async ({ id, type }) => {
+    const response = await fetch(HOST + "/byId?hiringId=" + id + "&type=" + type, {
       method: "GET",
     });
     const json = await response.json();
@@ -22,23 +22,15 @@ const ApplicationState = (props) => {
       json.error + ": " + json.message,
       null,
       async () => {
-        setCurrentApplication(json);
+        setCurrentHiring(json);
       }
     );
   };
 
-  // Get Application by Posting
+  // Get Hires by Posting
   const getByPosting = async ({ postingId }) => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    if (!token) {
-      router.push("/login");
-      return;
-    }
     const response = await fetch(HOST + "/byPosting?postingId=" + postingId, {
       method: "GET",
-      headers: {
-        "auth-token": token,
-      },
     });
     const json = await response.json();
     checkRequest(
@@ -46,19 +38,19 @@ const ApplicationState = (props) => {
       json.error + ": " + json.message,
       null,
       async () => {
-        setApplications(json);
+        setHirings(json);
       }
     );
   };
 
-  // Get Application by Student
-  const getByStudent = async () => {
+  // Get Hirings of Student
+  const getByStudent = async ({ type }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
       router.push("/login");
       return;
     }
-    const response = await fetch(HOST + "/byStudent", {
+    const response = await fetch(HOST + "/byStudent?type=" + type, {
       method: "GET",
       headers: {
         "auth-token": token,
@@ -70,43 +62,67 @@ const ApplicationState = (props) => {
       json.error + ": " + json.message,
       null,
       async () => {
-        setApplications(json);
+        setHirings(json);
       }
     );
   };
 
-  // Apply to posting
-  const apply = async ({ posting, resume }) => {
+  // Accept application
+  const accept = async ({ applicationId }) => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
       router.push("/login");
       return;
     }
-    const response = await fetch(HOST + "/apply", {
+    const response = await fetch(HOST + "/accept", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "auth-token": token,
       },
-      body: JSON.stringify({ posting, resume }),
+      body: JSON.stringify({ applicationId }),
     });
     const json = await response.json();
     checkRequest(
       response.status,
       json.error + ": " + json.message,
-      "Applied to the posting id: " + String(posting),
+      "Hired the student: " + String(json.student.sid),
+      async () => { }
+    );
+  };
+
+  // Reject application
+  const reject = async ({ applicationId }) => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+    const response = await fetch(HOST + "/reject", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify({ applicationId }),
+    });
+    const json = await response.json();
+    checkRequest(
+      response.status,
+      json.error + ": " + json.message,
+      "Rejected the student: " + String(json.student.sid),
       async () => { }
     );
   };
 
   return (
-    <ApplicationContext.Provider value={{
-      getByID, getByPosting, getByStudent, apply,
-      currentApplication, applications
+    <HiringContext.Provider value={{
+      getByID, getByPosting, getByStudent,
+      currentHiring, hirings
     }}>
       {props.children}
-    </ApplicationContext.Provider>
+    </HiringContext.Provider>
   );
 };
 
-export default ApplicationState;
+export default HiringState;

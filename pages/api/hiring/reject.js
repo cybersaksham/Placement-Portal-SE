@@ -63,12 +63,12 @@ export default router
                                 let newData = await ApplicationModel.findByIdAndUpdate(applicationId,
                                     { $set: { status: applicationStatus.rejected } },
                                     { new: true },
-                                )
-                                return res.send(newData);
+                                ).populate({ path: "student", select: "-password" });
+                                return res.json(newData);
                             } else {
                                 return res.status(400).json({
                                     error: "Validation Error",
-                                    message: "Cannot change status of this application"
+                                    message: "Cannot reject this application"
                                 });
                             }
                         }

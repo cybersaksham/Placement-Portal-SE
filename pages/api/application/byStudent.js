@@ -1,5 +1,5 @@
 import { ApplicationModel, StudentModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { modelTypes, userTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -33,6 +33,8 @@ export default router
                 }).lean();
             data.company = data.posting.company;
             delete data.posting.company;
+            let moreDetails = await modelTypes[data.posting.type].findById(data.posting._id);
+            data.posting.details = moreDetails;
             return res.send(data);
         } catch (e) {
             return res.status(500).json({

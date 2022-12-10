@@ -1,5 +1,5 @@
 import { ApplicationModel, CompanyModel, PostingModel } from "../../../models";
-import { userTypes } from "../../../lib/types";
+import { applicationStatus, userTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import router from "../../../lib/router";
 
@@ -40,7 +40,13 @@ export default router
                         });
                     }
 
-                    data = await ApplicationModel.find({ posting: postingId })
+                    data = await ApplicationModel.find({
+                        posting: postingId, $or: [
+                            { status: applicationStatus.applied },
+                            { status: applicationStatus.accepted },
+                            { status: applicationStatus.rejected },
+                        ]
+                    })
                         .populate({ path: "student", select: "-password" })
                     return res.json(data);
                 } else return res.status(400).json({

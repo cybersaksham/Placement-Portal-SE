@@ -60,6 +60,15 @@ export default router
                             }
                             if (data.status === applicationStatus.applied &&
                                 !data.posting.isClosed) {
+                                // Closing all other applications
+                                await ApplicationModel.populate("posting")
+                                    .updateMany(
+                                        {
+                                            "posting.type": data.posting.type,
+                                            student: application.student
+                                        },
+                                        { $set: { status: applicationStatus.closed } },
+                                    )
                                 let hired = await hiringTypes[data.posting.type].create({
                                     posting: data.posting.id,
                                     student: data.student
@@ -68,11 +77,14 @@ export default router
                                     { $set: { status: applicationStatus.accepted } },
                                     { new: true },
                                 )
-                                return res.send(hired);
+                                hired = await hiringTypes[data.posting.type].findById(hired.id)
+                                    .populate("posting")
+                                    .populate({ path: "student", select: "-password" });
+                                return res.json(hired);
                             } else {
                                 return res.status(400).json({
                                     error: "Validation Error",
-                                    message: "Cannot change status of this application"
+                                    message: "Cannot hire this application"
                                 });
                             }
                         }

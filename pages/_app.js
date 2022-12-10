@@ -4,6 +4,7 @@ import AlertState from '../Context/Alert/AlertState'
 import AuthState from '../Context/Auth/AuthState'
 import AdminState from "../Context/Admin/AdminState"
 import ApplicationState from "../Context/Application/ApplicationState"
+import HiringState from "../Context/Hiring/HiringState"
 import Alert from '../Components/Alert'
 import Navbar from '../Components/Navbar'
 import { useEffect } from 'react'
@@ -24,9 +25,11 @@ function MyApp({ Component, pageProps }) {
       <AuthState>
         <AdminState>
           <ApplicationState>
-            <Navbar />
-            <Alert />
-            <Component {...pageProps} />
+            <HiringState>
+              <Navbar />
+              <Alert />
+              <Component {...pageProps} />
+            </HiringState>
           </ApplicationState>
         </AdminState>
       </AuthState>
