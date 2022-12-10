@@ -1,19 +1,20 @@
 import { JobPostModel, PlacementModel, PostingModel, StudentModel } from "../../models";
 import { connectToDB } from "../../middlewares";
-import { branchTypes, modelTypes, postTypes, salaryRepresentations } from "../../lib/types";
+import { branchTypes, hiringTypes, modelTypes, salaryTypes, salaryRepresentations } from "../../lib/types";
 import router from "../../lib/router";
 
 export default router
     .all(connectToDB)
     .get(async (req, res) => {
         try {
-            const { year, type } = req.query;
+            let { year, type } = req.query;
 
             if (year && type) {
+                year = Number(year);
                 let totalStudents = await StudentModel
                     .find({ graduationYear: year })
                     .select("sid branch").lean();
-                let placedStudentsData = await PlacementModel.find()
+                let placedStudentsData = await hiringTypes[type].find()
                     .populate({ path: "student", select: "sid branch" })
                     .populate({ path: "posting", select: "graduationYear type" })
                     .find({ "posting.graduationYear": year, "posting.type": type })
@@ -45,7 +46,8 @@ export default router
                         let data = {
                             branch, totalStudents: branchStudents.length,
                             placedStudents: branchPlaced.length,
-                            highest, average
+                            highest: String(highest) + " " + salaryTypes[type],
+                            average: String(average) + " " + salaryTypes[type],
                         }
                         data["placement"] = `${Number((data.placedStudents * 100) / data.totalStudents).toFixed(2)}%`;
                         finalData.push(data);
