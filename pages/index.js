@@ -1,50 +1,50 @@
+import { useContext, useEffect, useState } from "react"
+import Stats from "../Components/Stats";
+import StatsContext from "../Context/Stats/StatsContext"
+
 export default function Home() {
+  const { getStats, internStats, placementStats } = useContext(StatsContext);
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [searchedYear, setSearchedYear] = useState(new Date().getFullYear());
+
+  const searchStats = () => {
+    setSearchedYear(year);
+    getStats({ year, type: "Intern" });
+    getStats({ year, type: "Job" });
+  }
+
+  useEffect(() => {
+    searchStats();
+  }, [])
+
   return (
     <div className="container-fluid">
-      <div className="col-lg-12">
-        <div className="card">
-          <div className="card-header">
-            <div className="row">
-              <div className="col-12">
-                <h3>Placement Statistics 2022-23</h3>
-                <h5 className="font-light text-muted">Placement Cell, MNIT Jaipur</h5>
-              </div>
-            </div>
-          </div>
-          <div className="card-body">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th className="text-center">#</th>
-                  <th>BRANCH</th>
-                  <th>OFFERS</th>
-                  <th>PLACED</th>
-                  <th>PLACEMENT</th>
-                  <th>HIGHEST</th>
-                  <th>AVERAGE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="text-center">1</td>
-                  <td className="txt-oflo">B.ARCH.</td>
-                  <td>
-                    <span className="text-info">16</span>
-                  </td>
-                  <td className="txt-oflo">16</td>
-                  <td>
-                    <span className="text-info">69.75%</span>
-                  </td>
-                  <td>
-                    <span className="text-success">6.75 LPA</span>
-                  </td>
-                  <td className="txt-oflo">5.36 LPA</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div className="mb-3 row">
+        <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+          Graduation Year
+        </label>
+        <div className="col-sm-8">
+          <input
+            placeholder="Year" type="number"
+            className="form-control"
+            aria-describedby="button-addon2"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+        </div>
+        <div className="col-sm-2">
+          <button
+            className="btn btn-outline-primary"
+            type="button"
+            id="button-addon2"
+            onClick={searchStats}
+          >
+            Search
+          </button>
         </div>
       </div>
+      <Stats placementStats={placementStats} heading={`Placement Statistics ${searchedYear}`} />
+      <Stats placementStats={internStats} heading={`Intern Statistics ${searchedYear}`} />
     </div>
   )
 }

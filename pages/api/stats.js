@@ -33,6 +33,7 @@ export default router
                 }))
 
                 let finalData = []
+                let finTotal = 0;
                 branchTypes.forEach(branch => {
                     let branchStudents = totalStudents.filter(st => st.branch === branch);
                     if (branchStudents.length > 0) {
@@ -42,6 +43,7 @@ export default router
                             if (el.stipend > highest) highest = el.stipend;
                             total += el.stipend;
                         })
+                        finTotal += total;
                         let average = branchPlaced.length > 0 ? Number(total / branchPlaced.length).toFixed(2) : 0;
                         let data = {
                             branch, totalStudents: branchStudents.length,
@@ -53,6 +55,25 @@ export default router
                         finalData.push(data);
                     }
                 })
+
+                // Calculating total
+                let finTotalStudents = 0, finPlacedStudents = 0;
+                let finHighest = 0;
+                finalData.forEach(el => {
+                    finTotalStudents += el.totalStudents;
+                    finPlacedStudents += el.placedStudents;
+                    let curHigh = Number(el.highest.split(" ")[0]);
+                    if (curHigh > finHighest) finHighest = curHigh;
+                })
+                let finAverage = finPlacedStudents > 0 ? Number(finTotal / finPlacedStudents).toFixed(2) : 0;
+                let totalData = {
+                    branch: "TOTAL", totalStudents: finTotalStudents,
+                    placedStudents: finPlacedStudents,
+                    placement: finTotalStudents > 0 ? `${Number((finPlacedStudents * 100) / finTotalStudents).toFixed(2)}%` : "-",
+                    highest: String(finHighest) + " " + salaryTypes[type],
+                    average: String(finAverage) + " " + salaryTypes[type],
+                }
+                finalData.push(totalData);
 
                 return res.json(finalData);
             } else {

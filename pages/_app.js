@@ -12,7 +12,7 @@ import StatsState from "../Context/Stats/StatsState"
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const unauthenticatedList = ["/auth/login", "/auth/register"];
+  const unauthenticatedList = ["/", "/auth/login", "/auth/register"];
 
   useEffect(() => {
     if (unauthenticatedList.indexOf(router.pathname) === -1) {

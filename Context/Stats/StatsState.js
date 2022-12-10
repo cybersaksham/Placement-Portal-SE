@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import useRequest from "../../Hooks/Request";
+import { postTypes } from "../../lib/frontendTypes";
 import StatsContext from "./StatsContext";
 
 const StatsState = (props) => {
   const HOST = "/api/stats";
 
-  const [stats, setStats] = useState([]);
+  const [internStats, setInternStats] = useState([]);
+  const [placementStats, setPlacementStats] = useState([]);
   const checkRequest = useRequest();
 
   // Get Stats
@@ -19,14 +21,15 @@ const StatsState = (props) => {
       json.error + ": " + json.message,
       null,
       async () => {
-        setStats(json);
+        if (type === postTypes.intern) setInternStats(json);
+        else if (type === postTypes.job) setPlacementStats(json);
       }
     );
   };
 
   return (
     <StatsContext.Provider value={{
-      getStats, stats
+      getStats, internStats, placementStats
     }}>
       {props.children}
     </StatsContext.Provider>
