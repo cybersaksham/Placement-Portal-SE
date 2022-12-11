@@ -35,6 +35,10 @@ export default nextConnect()
             const userId = req.user.id;
             const type = req.user.type;
             let user = await modelTypes[type].findById(userId).select("-password").lean();
+            if (!user) return res.status(401).json({
+                error: "Authentication error",
+                message: "Authentication token expired"
+            });
             user.usertype = type;
             return res.json(user);
         } catch (e) {

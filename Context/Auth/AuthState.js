@@ -71,6 +71,11 @@ const AuthState = (props) => {
       null,
       () => {
         setCurrentUser(json);
+      },
+      () => {
+        localStorage.removeItem("token");
+        setCurrentUser(null);
+        router.push("/auth/login");
       }
     );
   };
