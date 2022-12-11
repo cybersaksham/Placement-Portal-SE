@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
+import Avatar from 'react-avatar';
 import AuthContext from '../Context/Auth/AuthContext';
 
 const Navbar = () => {
@@ -45,17 +46,7 @@ const Navbar = () => {
                             }
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input
-                            className="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button className="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
-                    </form>
+                    {currentUser && <Avatar name={currentUser.name} size={35} round="20px" />}
                 </div>
             </div>
         </nav>
