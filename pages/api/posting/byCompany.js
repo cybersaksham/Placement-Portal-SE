@@ -1,6 +1,6 @@
 import { CompanyModel, InternPostModel, JobPostModel } from "../../../models";
 import { connectToDB } from "../../../middlewares";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 
 const destructure = (d1) => {
     let d2 = d1.posting;
@@ -11,7 +11,7 @@ const destructure = (d1) => {
     return d3;
 }
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .get(async (req, res) => {
         try {

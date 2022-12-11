@@ -4,11 +4,11 @@ import { connectToDB, initValidation } from "../../../middlewares";
 import { companyValidator } from "../../../lib/validators";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 
 const JWT_SECRET = process.env.JWT_SECRET || "NOT_SO_SECRET";
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .get(async (req, res) => {
         try {

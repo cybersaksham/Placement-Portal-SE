@@ -2,9 +2,9 @@ import { PostingModel, JobPostModel, CompanyModel } from "../../../models";
 import { postTypes, userTypes } from "../../../lib/types";
 import { connectToDB, initValidation, fetchUser } from "../../../middlewares";
 import { postingValidator, jobPostValidator } from "../../../lib/validators";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .get(async (req, res) => {
         try {

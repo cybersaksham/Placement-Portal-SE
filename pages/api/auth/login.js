@@ -2,11 +2,11 @@ import { connectToDB } from "../../../middlewares";
 import { modelTypes, userTypes } from "../../../lib/types";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 
 const JWT_SECRET = process.env.JWT_SECRET || "NOT_SO_SECRET";
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .post(async (req, res) => {
         try {

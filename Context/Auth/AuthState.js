@@ -28,6 +28,7 @@ const AuthState = (props) => {
       "Logged in successfully",
       async () => {
         localStorage.setItem("token", JSON.stringify(json.authToken));
+        fetchUser();
         router.push("/");
       }
     );
@@ -36,6 +37,7 @@ const AuthState = (props) => {
   // Logging Out
   const logoutUser = async () => {
     localStorage.removeItem("token");
+    setCurrentUser(null);
     checkRequest(
       200,
       null,

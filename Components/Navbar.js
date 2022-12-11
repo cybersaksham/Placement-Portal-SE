@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
 import AuthContext from '../Context/Auth/AuthContext';
 
 const Navbar = () => {
     const { currentUser, logoutUser } = useContext(AuthContext);
+    const router = useRouter();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,21 +27,21 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/">
+                            <Link className={`nav-link ${router.pathname === "/" ? "active" : ""}`} aria-current="page" href="/">
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" aria-current="page" href="/posting">
+                            <Link className={`nav-link ${router.pathname.startsWith("/posting") ? "active" : ""}`} aria-current="page" href="/posting">
                                 Postings
                             </Link>
                         </li>
                         <li className="nav-item">
                             {
                                 currentUser ?
-                                    <span className="nav-link" style={{ cursor: "pointer" }}
+                                    <span className={`nav-link ${router.pathname.startsWith("/auth") ? "active" : ""}`} style={{ cursor: "pointer" }}
                                         onClick={logoutUser}>Logout</span>
-                                    : <Link className="nav-link" href="/auth/login">Login</Link>
+                                    : <Link className={`nav-link ${router.pathname.startsWith("/auth") ? "active" : ""}`} href="/auth/login">Login</Link>
                             }
                         </li>
                     </ul>

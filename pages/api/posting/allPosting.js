@@ -1,6 +1,6 @@
 import { userTypes, salaryRepresentations, salaryTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 import { AdminModel, CompanyModel, InternPostModel, JobPostModel, StudentModel } from "../../../models";
 
 const destructure = (d1) => {
@@ -12,7 +12,7 @@ const destructure = (d1) => {
     return d3;
 }
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .get(fetchUser, async (req, res) => {
         try {

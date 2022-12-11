@@ -1,8 +1,8 @@
 import { connectToDB, fetchUser } from "../../../middlewares";
 import { modelTypes } from "../../../lib/types";
-import router from "../../../lib/router";
+import nextConnect from "next-connect";
 
-export default router
+export default nextConnect()
     .all(connectToDB)
     .post(fetchUser, async (req, res) => {
         try {
