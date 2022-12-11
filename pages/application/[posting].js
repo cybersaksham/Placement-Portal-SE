@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { applicationStatus } from "../../lib/frontendTypes";
 import { downloadPdf } from "../../lib/utils";
 import ApplicationContext from "../../Context/Application/ApplicationContext";
+import Link from "next/link";
 
 const Application = () => {
     const { applications, getByPosting } = useContext(ApplicationContext);
@@ -36,7 +37,7 @@ const Application = () => {
                         <tr key={i}>
                             <td className="text-center">{i + 1}</td>
                             <td className="txt-oflo">
-                                {el.student.sid}
+                                <Link href={"/user/" + el.student._id}>{el.student.sid}</Link>
                             </td>
                             <td>
                                 <span className="text-oflo">

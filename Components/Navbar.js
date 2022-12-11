@@ -52,7 +52,7 @@ const Navbar = () => {
                             }
                         </li>
                     </ul>
-                    {currentUser && <Avatar name={currentUser.name} size={35} round="20px" />}
+                    {currentUser && <Link href={"/user/" + currentUser._id}><Avatar name={currentUser.name} size={35} round="20px" /></Link>}
                 </div>
             </div>
         </nav>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import Loader from "../../Components/Loader";
 import AuthContext from "../../Context/Auth/AuthContext";
@@ -32,7 +33,7 @@ const Company = () => {
                     <tr key={i}>
                         <td className="text-center">{i + 1}</td>
                         <td className="txt-oflo">
-                            {el.name}
+                            <Link href={"/user/" + el._id}>{el.name}</Link>
                         </td>
                         <td className="txt-oflo">
                             {el.type}

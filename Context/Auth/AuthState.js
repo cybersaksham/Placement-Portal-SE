@@ -7,6 +7,7 @@ const AuthState = (props) => {
   const HOST = "/api/auth";
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [fetchedUser, setFetchedUser] = useState(null);
   const [company, setCompany] = useState(null);
   const [companies, setCompanies] = useState([]);
   const [student, setStudent] = useState(null);
@@ -70,6 +71,22 @@ const AuthState = (props) => {
       null,
       () => {
         setCurrentUser(json);
+      }
+    );
+  };
+
+  // Get By ID
+  const getByID = async ({ userId }) => {
+    const response = await fetch(HOST + "/user?userId=" + userId, {
+      method: "GET"
+    });
+    const json = await response.json();
+    checkRequest(
+      response.status,
+      json.error + ": " + json.message,
+      null,
+      () => {
+        setFetchedUser(json);
       }
     );
   };
@@ -181,10 +198,10 @@ const AuthState = (props) => {
 
   return (
     <AuthContext.Provider value={{
-      loginUser, logoutUser, fetchUser,
+      loginUser, logoutUser, fetchUser, getByID,
       getCompany, getAllCompanies, registerCompany,
       getStudent, registerStudent,
-      currentUser, company, companies, student
+      currentUser, fetchedUser, company, companies, student
     }}>
       {props.children}
     </AuthContext.Provider>
