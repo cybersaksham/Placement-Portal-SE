@@ -4,6 +4,7 @@ import { capitalize } from "../lib/utils";
 import AuthContext from '../Context/Auth/AuthContext'
 import ClosePostModal from '../Modals/ClosePost';
 import ApplyPostModal from '../Modals/ApplyPost';
+import Link from 'next/link';
 
 const SingleRow = ({ field, value }) => {
     return <div className="mb-3 row">
@@ -31,7 +32,8 @@ const PostingCard = ({ post }) => {
                     </button>
                     <ul className="dropdown-menu">
                         {currentUser.usertype === userTypes.student && <li><span className={`dropdown-item ${post.isApplied ? "text-muted" : "pointer"}`} data-bs-toggle={post.isApplied ? "" : "modal"} data-bs-target={post.isApplied ? "" : `#applyPostModal_${post._id}`}>Apply</span></li>}
-                        <li><span className="dropdown-item pointer">View Company</span></li>
+                        <li><Link href="/company"><span className="dropdown-item pointer">View Company</span></Link></li>
+                        {currentUser.usertype === userTypes.company && <li><Link href={`/application/${post._id}`}><span className="dropdown-item pointer">View Applications</span></Link></li>}
                         {currentUser.usertype === userTypes.company && <li><span className={`dropdown-item text-danger ${post.isClosed ? "text-muted" : "pointer"}`} data-bs-toggle={post.isClosed ? "" : "modal"} data-bs-target={post.isClosed ? "" : `#closePostModal_${post._id}`}>Close Post</span></li>}
                     </ul>
                 </div>

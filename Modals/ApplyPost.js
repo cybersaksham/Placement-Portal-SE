@@ -30,16 +30,19 @@ const ApplyPostModal = ({ postId }) => {
                 <div className="modal-body">
                     <p><b>Submit your resume in order to apply to this post.</b></p>
                     <div className="input-group mb-3">
-                        <input type="file" accept="pdf|docx|image/*" className="form-control" id="inputGroupFile01" onChange={(e) => {
+                        <input type="file" accept="application/pdf" className="form-control" id="inputGroupFile01" onChange={(e) => {
                             const file = e.target.files[0];
-                            const reader = new FileReader();
-                            reader.readAsText(file);
-                            reader.onload = (e) => {
-                                setResume(String(e.target.result));
-                            }
-                            reader.onerror = (e) => {
+                            if (!file || file.type !== "application/pdf") {
                                 setResume(null);
+                                return;
                             }
+                            const reader = new FileReader();
+                            var base64;
+                            reader.readAsDataURL(file);
+                            reader.onload = function (fileLoadedEvent) {
+                                base64 = fileLoadedEvent.target.result;
+                                setResume(base64);
+                            };
                         }} />
                     </div>
                     <p>After submitting, company will be able to see your application. You won't be able to delete it once submitted.</p>

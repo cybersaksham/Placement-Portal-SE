@@ -47,7 +47,7 @@ export default nextConnect()
                             { status: applicationStatus.rejected },
                         ]
                     })
-                        .populate({ path: "student", select: "-password" })
+                        .populate({ path: "student", select: "-password" }).lean();
                     return res.json(data);
                 } else return res.status(400).json({
                     error: "Arguments Error",
