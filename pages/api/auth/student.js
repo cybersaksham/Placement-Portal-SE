@@ -14,7 +14,7 @@ export default nextConnect()
         try {
             const { sid } = req.query;
             if (sid) {
-                const student = await StudentModel.find({ sid }).select("-password");
+                const student = await StudentModel.find({ sid: String(sid).toUpperCase() }).select("-password");
                 if (student) return res.json(student);
                 else return res.status(400).json({
                     error: "Arguments Error",
@@ -56,7 +56,7 @@ export default nextConnect()
             // Creating a new Student
             student = await StudentModel.create({
                 name,
-                sid,
+                sid: String(sid).toUpperCase(),
                 password: secPass,
                 degree, branch, graduationYear,
                 dob, skills, cgpa

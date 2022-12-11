@@ -14,7 +14,7 @@ export default nextConnect()
 
             let user = await modelTypes[type].findOne(
                 userTypes.student === type
-                    ? { sid: id }
+                    ? { sid: String(id).toUpperCase() }
                     : { email: id }
             );
             if (!user) {

@@ -35,11 +35,6 @@ const CreatePost = () => {
         const joiningDate = joiningDateRef.current.value;
         const stipend = stipendRef.current.value;
         const duration = durationRef.current.value;
-        console.log({
-            role, branches,
-            minCGPA, location, graduationYear, joiningDate,
-            stipend, duration
-        });
         await postIntern({
             role, branches,
             minCGPA, location, graduationYear, joiningDate,
@@ -58,11 +53,6 @@ const CreatePost = () => {
         const joiningDate = joiningDateRef.current.value;
         const ctc = ctcRef.current.value;
         const shares = sharesRef.current.value;
-        console.log({
-            role, branches,
-            minCGPA, location, graduationYear, joiningDate,
-            ctc, shares
-        });
         await postJob({
             role, branches,
             minCGPA, location, graduationYear, joiningDate,

@@ -27,10 +27,6 @@ const Application = () => {
         }
     }, [posting])
 
-    useEffect(() => {
-        console.log(applications);
-    }, [applications])
-
 
     return isloader ? <Loader /> : applications && applications.length === 0 ? <center className='mt-3 fw-bold fs-3'>No application found</center> : (
         <div>

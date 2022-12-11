@@ -68,7 +68,7 @@ export default nextConnect()
                 });
                 Array.from(jobData).forEach((el, i) => {
                     jobData[i] = destructure(el);
-                    if (applicationIds.indexOf(jobData[i]._id) !== -1) {
+                    if (applicationIds.indexOf(String(jobData[i]._id)) !== -1) {
                         jobData[i].isApplied = true;
                     } else jobData[i].isApplied = false;
                 })

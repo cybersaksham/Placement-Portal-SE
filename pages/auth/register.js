@@ -186,14 +186,14 @@ const register = () => {
                     </div>
                     <div className="mb-3 row">
                         <label htmlFor="admYear" className="col-sm-2 col-form-label">
-                            Admission Year
+                            Graduation Year
                         </label>
                         <div className="col-sm-4">
                             <input
                                 type="number"
                                 className="form-control"
                                 id="admYear"
-                                placeholder="Admission Year"
+                                placeholder="Graduation Year"
                                 ref={graduationYearRef}
                             />
                         </div>
