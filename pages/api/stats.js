@@ -17,8 +17,11 @@ export default nextConnect()
                 let placedStudentsData = await hiringTypes[type].find()
                     .populate({ path: "student", select: "sid branch" })
                     .populate({ path: "posting", select: "graduationYear type" })
-                    .find({ "posting.graduationYear": year, "posting.type": type })
                     .lean();
+                placedStudentsData = placedStudentsData.filter(el => {
+                    return el.posting.graduationYear == year
+                        && el.posting.type == type;
+                })
 
                 let placedStudents = [];
                 await Promise.all(placedStudentsData.map(async (el) => {
@@ -40,8 +43,8 @@ export default nextConnect()
                         let branchPlaced = placedStudents.filter(st => st.branch === branch);
                         let highest = 0, total = 0;
                         branchPlaced.forEach(el => {
-                            if (el.stipend > highest) highest = el.stipend;
-                            total += el.stipend;
+                            if (Number(el.stipend) > highest) highest = Number(el.stipend);
+                            total += Number(el.stipend);
                         })
                         finTotal += total;
                         let average = branchPlaced.length > 0 ? Number(total / branchPlaced.length).toFixed(2) : 0;
