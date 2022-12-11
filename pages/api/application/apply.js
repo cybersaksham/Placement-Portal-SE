@@ -72,6 +72,21 @@ export default nextConnect()
             if (posting) {
                 let post = await PostingModel.findById(posting);
                 if (post && !post.isClosed) {
+                    // Check for CGPA
+                    if (post.minCGPA && post.minCGPA > student.cgpa) return res.status(400).json({
+                        error: "Policy Error",
+                        message: "You have not the minimum CGPA to apply"
+                    });
+
+                    // Checking for branch
+                    if (post.branches && post.branches.length > 0
+                        && post.branches.indexOf(student.branch) === -1) {
+                        return res.status(400).json({
+                            error: "Policy Error",
+                            message: "Your branch is not allowed to apply"
+                        });
+                    }
+
                     // Checking if already applied
                     let applyData = await ApplicationModel.findOne({
                         posting, student: userId

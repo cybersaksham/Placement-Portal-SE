@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import Link from 'next/link';
 import Loader from "../../Components/Loader";
 import PostingCard from '../../Components/PostingCard';
 import PostingContext from "../../Context/Posting/PostingContext";
@@ -69,8 +70,10 @@ const Postings = () => {
                     {postings.interns.length === 0 ? <center className='mt-3 fw-bold fs-3'>No intern found</center> : postings.interns.map((el, i) => <PostingCard key={i} post={el} />)}
                 </div>
             </div>
+            <Link className="add-btn" href="/posting/create">
+                <i className="bi bi-plus-lg"></i>
+            </Link>
         </>
-
     )
 }
 

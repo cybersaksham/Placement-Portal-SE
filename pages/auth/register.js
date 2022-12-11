@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import Link from 'next/link';
-import { userTypes } from '../../lib/frontendTypes'
+import { branchTypes, userTypes } from '../../lib/frontendTypes'
 import AuthContext from '../../Context/Auth/AuthContext';
 
 const register = () => {
@@ -165,13 +165,11 @@ const register = () => {
                             Branch
                         </label>
                         <div className="col-sm-4">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="branch"
-                                placeholder="Branch"
-                                ref={branchRef}
-                            />
+                            <div className="input-group">
+                                <select className="form-select" id="inputGroupSelect02" ref={branchRef}>
+                                    {branchTypes.map((el, i) => <option key={i + 1} value={el}>{el}</option>)}
+                                </select>
+                            </div>
                         </div>
                         <label htmlFor="degree" className="col-sm-1 col-form-label">
                             Degree

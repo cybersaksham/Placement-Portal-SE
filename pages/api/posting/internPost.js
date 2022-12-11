@@ -82,7 +82,7 @@ export default nextConnect()
                     stipend, duration
                 })
 
-                let data = InternPostModel.findById(internPost.id)
+                let data = await InternPostModel.findById(internPost.id)
                     .populate({
                         path: "posting",
                         populate: { path: "company", select: "-password" }

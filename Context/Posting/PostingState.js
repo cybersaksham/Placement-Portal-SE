@@ -135,6 +135,7 @@ const PostingState = (props) => {
       "Intern posting created",
       async () => {
         setCurrentPosting(json);
+        router.push("/posting");
       }
     );
   };
@@ -183,6 +184,7 @@ const PostingState = (props) => {
       "Job posting created",
       async () => {
         setCurrentPosting(json);
+        router.push("/posting");
       }
     );
   };

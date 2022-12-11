@@ -12,18 +12,11 @@ import StatsState from "../Context/Stats/StatsState"
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const unauthenticatedList = ["/", "/company", "/auth/login", "/auth/register"];
-  const unauthenticatedStartWith = ["/user"];
+  const unauthenticatedList = ["/", "/company", "/auth", "/user"];
 
   useEffect(() => {
-    let flag = false;
-    unauthenticatedStartWith.forEach(el => {
-      if (router.pathname.startsWith(el)) {
-        flag = true;
-        return;
-      }
-    })
-    if (!flag && unauthenticatedList.indexOf(router.pathname) === -1) {
+    let path = "/" + router.pathname.split("/")[1];
+    if (unauthenticatedList.indexOf(path) === -1) {
       const token = JSON.parse(localStorage.getItem("token"));
       if (!token) router.push("/auth/login");
     }

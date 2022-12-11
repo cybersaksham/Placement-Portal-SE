@@ -48,7 +48,7 @@ const User = () => {
                                                 <span className="display-26 text-secondary me-2 font-weight-600">
                                                     {capitalize(el)}:
                                                 </span>{" "}
-                                                {fetchedUser[el].toString()}
+                                                {el === "dob" ? fetchedUser[el].substring(0, 10).toString() : fetchedUser[el].toString()}
                                             </li>)}
                                         </ul>
                                         {currentUser && currentUser.usertype === userTypes.admin && fetchedUser.usertype !== userTypes.admin && (!fetchedUser.isBanned ? <button className="btn btn-outline-danger" onClick={() => {

@@ -43,7 +43,8 @@ export default nextConnect()
                     }).lean();
                 internData = Array.from(internData).filter(el => {
                     if (el.posting.graduationYear == student.graduationYear) {
-                        return !el.posting.isClosed;
+                        if (el.posting.branches.length === 0) return !el.posting.isClosed;
+                        else return el.posting.branches.indexOf(student.branch) >= 0 && !el.posting.isClosed;
                     }
                 });
                 Array.from(internData).forEach((el, i) => {
@@ -61,7 +62,8 @@ export default nextConnect()
                     }).lean();
                 jobData = Array.from(jobData).filter(el => {
                     if (el.posting.graduationYear == student.graduationYear) {
-                        return !el.posting.isClosed;
+                        if (el.posting.branches.length === 0) return !el.posting.isClosed;
+                        else return el.posting.branches.indexOf(student.branch) >= 0 && !el.posting.isClosed;
                     }
                 });
                 Array.from(jobData).forEach((el, i) => {

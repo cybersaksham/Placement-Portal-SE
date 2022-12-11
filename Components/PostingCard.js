@@ -46,6 +46,8 @@ const PostingCard = ({ post }) => {
                 <SingleRow field="Branches" value={post.branches.join(", ")} />
                 <SingleRow field="Graduation Year" value={post.graduationYear} />
                 <SingleRow field="Type" value={post.type} />
+                {post.minCGPA && <SingleRow field="MinCGPA" value={post.minCGPA} />}
+                {post.joiningDate && <SingleRow field="Joining Date" value={post.joiningDate.substring(0, 10)} />}
                 {Object.keys(post.details).map((el, i) => el.charAt(0) != "_" && <SingleRow key={i} field={capitalize(el)} value={post.details[el]} />)}
                 <p className="card-text d-flex justify-content-between">
                     <small className="text-muted">
