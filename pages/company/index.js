@@ -26,6 +26,7 @@ const Company = () => {
                     <th>TYPE</th>
                     <th>EMAIL</th>
                     <th>HEADOFFICE</th>
+                    <th>BANNED</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@ const Company = () => {
                         </td>
                         <td className="txt-oflo">
                             {el.headOffice}
+                        </td>
+                        <td className={`txt-oflo ${el.isBanned ? "text-danger" : ""}`}>
+                            {el.isBanned ? "Yes" : "No"}
                         </td>
                     </tr>
                 )}

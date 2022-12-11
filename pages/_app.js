@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         return;
       }
     })
-    if (!flag && unauthenticatedList.indexOf(router.pathname) >= 0) {
+    if (!flag && unauthenticatedList.indexOf(router.pathname) === -1) {
       const token = JSON.parse(localStorage.getItem("token"));
       if (!token) router.push("/auth/login");
     }

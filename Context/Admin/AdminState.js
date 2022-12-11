@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
 import useRequest from "../../Hooks/Request";
+import AuthContext from "../Auth/AuthContext";
 import AdminContext from "./AdminContext";
 
 const AdminState = (props) => {
   const HOST = "/api/admin";
 
+  const { getByID } = useContext(AuthContext);
   const checkRequest = useRequest();
   const router = useRouter();
 
@@ -29,7 +31,9 @@ const AdminState = (props) => {
       response.status,
       json.error + ": " + json.message,
       "User banned successfully",
-      async () => { }
+      async () => {
+        getByID({ userId: id });
+      }
     );
   };
 
@@ -53,7 +57,9 @@ const AdminState = (props) => {
       response.status,
       json.error + ": " + json.message,
       "User unbanned successfully",
-      async () => { }
+      async () => {
+        getByID({ userId: id });
+      }
     );
   };
 

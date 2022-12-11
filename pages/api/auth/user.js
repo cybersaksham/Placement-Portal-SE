@@ -1,5 +1,5 @@
 import { connectToDB, fetchUser } from "../../../middlewares";
-import { modelTypes } from "../../../lib/types";
+import { modelTypes, userTypes } from "../../../lib/types";
 import nextConnect from "next-connect";
 import { AdminModel, CompanyModel, StudentModel } from "../../../models";
 
@@ -11,9 +11,13 @@ export default nextConnect()
             let admin = await AdminModel.findById(userId).select("-password").lean();
             let company = await CompanyModel.findById(userId).select("-password").lean();
             let student = await StudentModel.findById(userId).select("-password").lean();
-            if (admin) return res.json(admin);
-            else if (company) return res.json(company);
-            else if (student) return res.json(student);
+            let user = admin || company || student;
+            if (user) {
+                if (admin) user.usertype = userTypes.admin;
+                else if (company) user.usertype = userTypes.company;
+                else if (student) user.usertype = userTypes.student;
+                return res.json(user);
+            }
             else return res.status(400).json({
                 error: "Arguments error",
                 message: "No user exist with the given id"

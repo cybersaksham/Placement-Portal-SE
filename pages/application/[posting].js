@@ -1,24 +1,31 @@
 import { useRouter } from "next/router"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { applicationStatus } from "../../lib/frontendTypes";
 import { downloadPdf } from "../../lib/utils";
 import ApplicationContext from "../../Context/Application/ApplicationContext";
 import Link from "next/link";
+import Loader from "../../Components/Loader";
 
 const Application = () => {
     const { applications, getByPosting } = useContext(ApplicationContext);
+    const [isloader, setIsloader] = useState(true);
 
     const router = useRouter();
     const posting = router.query.posting;
 
+    const fetchApplications = async () => {
+        setIsloader(true);
+        await getByPosting({ postingId: posting });
+        setIsloader(false);
+    }
+
     useEffect(() => {
         if (posting) {
-            getByPosting({ postingId: posting });
+            fetchApplications();
         }
     }, [posting])
 
-
-    return applications && applications.length === 0 ? <center className='mt-3 fw-bold fs-3'>No application found</center> : (
+    return isloader ? <Loader /> : applications && applications.length === 0 ? <center className='mt-3 fw-bold fs-3'>No application found</center> : (
         <div>
             <table className="table table-hover">
                 <thead>
@@ -29,6 +36,7 @@ const Application = () => {
                         <th>BRANCH</th>
                         <th>CGPA</th>
                         <th>STATUS</th>
+                        <th>BANNED</th>
                         <th>RESUME</th>
                     </tr>
                 </thead>
@@ -52,6 +60,9 @@ const Application = () => {
                             </td>
                             <td className={`txt-oflo ${el.status === applicationStatus.accepted ? "text-success" : el.status === applicationStatus.rejected ? "text-danger" : ""}`}>
                                 {el.status}
+                            </td>
+                            <td className={`txt-oflo ${el.student.isBanned ? "text-danger" : ""}`}>
+                                {el.student.isBanned ? "Yes" : "No"}
                             </td>
                             <td className="txt-oflo text-info">
                                 <i className="bi bi-download pointer" onClick={() => {
