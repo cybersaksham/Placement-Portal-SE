@@ -61,7 +61,6 @@ const AuthState = (props) => {
       }
     });
     const json = await response.json();
-    console.log(token, json);
     checkRequest(
       response.status,
       json.error + ": " + json.message,

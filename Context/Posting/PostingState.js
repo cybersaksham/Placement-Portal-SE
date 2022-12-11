@@ -12,9 +12,17 @@ const PostingState = (props) => {
   const router = useRouter();
 
   // Get All Postings
-  const getAll = async ({ type }) => {
-    const response = await fetch(HOST + "/allPosting?type=" + type, {
+  const getAll = async () => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (!token) {
+      router.push("/auth/login");
+      return;
+    }
+    const response = await fetch(HOST + "/allPosting", {
       method: "GET",
+      headers: {
+        "auth-token": token,
+      },
     });
     const json = await response.json();
     checkRequest(
@@ -28,8 +36,8 @@ const PostingState = (props) => {
   };
 
   // Get By Company
-  const getByCompany = async ({ id, type }) => {
-    const response = await fetch(HOST + "/byCompany?companyId=" + id + "&type=" + type, {
+  const getByCompany = async ({ id }) => {
+    const response = await fetch(HOST + "/byCompany?companyId=" + id, {
       method: "GET",
     });
     const json = await response.json();

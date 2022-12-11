@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AlertContext from "../Context/Alert/AlertContext";
+import { capitalize } from "../lib/utils";
 
 const Alert = () => {
     const { alert } = useContext(AlertContext);
@@ -7,7 +8,7 @@ const Alert = () => {
 
     useEffect(() => {
         if (alert) {
-            setAlertType(String(alert.type.charAt(0).toUpperCase() + alert.type.slice(1)));
+            setAlertType(String(capitalize(alert.type)));
         }
     }, [alert])
 

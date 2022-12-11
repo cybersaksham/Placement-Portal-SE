@@ -30,6 +30,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" aria-current="page" href="/posting">
+                                Postings
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             {
                                 currentUser ?
                                     <span className="nav-link" style={{ cursor: "pointer" }}

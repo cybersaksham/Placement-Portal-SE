@@ -7,7 +7,7 @@ export default function Home() {
   const { getStats, internStats, placementStats } = useContext(StatsContext);
   const [year, setYear] = useState(new Date().getFullYear());
   const [searchedYear, setSearchedYear] = useState(new Date().getFullYear());
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const searchStats = async () => {
     setLoader(true);
