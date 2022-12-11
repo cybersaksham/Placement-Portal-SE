@@ -95,7 +95,9 @@ const ApplicationState = (props) => {
       response.status,
       json.error + ": " + json.message,
       "Applied to the posting id: " + String(posting),
-      async () => { }
+      async () => {
+        //TODO: go to application page
+      }
     );
   };
 

@@ -1,7 +1,7 @@
 import { userTypes, salaryRepresentations, salaryTypes } from "../../../lib/types";
 import { connectToDB, fetchUser } from "../../../middlewares";
 import nextConnect from "next-connect";
-import { AdminModel, CompanyModel, InternPostModel, JobPostModel, StudentModel } from "../../../models";
+import { AdminModel, ApplicationModel, CompanyModel, InternPostModel, JobPostModel, StudentModel } from "../../../models";
 
 const destructure = (d1) => {
     let d2 = d1.posting;
@@ -29,6 +29,12 @@ export default nextConnect()
                     });
                 }
 
+                // Fetching Applications
+                let applications = await ApplicationModel.find({ student: userId })
+                    .select("posting").lean();
+                let applicationIds = [];
+                applications.forEach(el => applicationIds.push(String(el.posting)));
+
                 // Finding Interns by graduation year
                 let internData = await InternPostModel.find()
                     .populate({
@@ -42,6 +48,9 @@ export default nextConnect()
                 });
                 Array.from(internData).forEach((el, i) => {
                     internData[i] = destructure(el);
+                    if (applicationIds.indexOf(String(internData[i]._id)) !== -1) {
+                        internData[i].isApplied = true;
+                    } else internData[i].isApplied = false;
                 })
 
                 // Finding Jobs by graduation year
@@ -57,6 +66,9 @@ export default nextConnect()
                 });
                 Array.from(jobData).forEach((el, i) => {
                     jobData[i] = destructure(el);
+                    if (applicationIds.indexOf(jobData[i]._id) !== -1) {
+                        jobData[i].isApplied = true;
+                    } else jobData[i].isApplied = false;
                 })
 
                 return res.json({ interns: internData, jobs: jobData })

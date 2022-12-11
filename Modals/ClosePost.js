@@ -6,17 +6,17 @@ const ClosePostModal = ({ postId }) => {
 
     return <div
         className="modal fade"
-        id="closePostModal"
+        id={`closePostModal_${postId}`}
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabIndex={-1}
-        aria-labelledby="closePostModalLabel"
+        aria-labelledby={`closePostModal_${postId}Label`}
         aria-hidden="true"
     >
         <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="closePostModalLabel">
+                    <h1 className="modal-title fs-5" id={`closePostModal_${postId}Label`}>
                         <b>Close Post</b>
                     </h1>
                     <button

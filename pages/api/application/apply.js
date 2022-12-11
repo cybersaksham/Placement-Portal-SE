@@ -82,10 +82,10 @@ export default nextConnect()
                     });
 
                     // Checking if already placed
-                    let placedData = await hiringTypes[post.type].find({ student: userId });
+                    let placedData = await hiringTypes[post.type].findOne({ student: userId });
                     if (placedData) return res.status(400).json({
                         error: "Policy Error",
-                        message: "You are already secured one place for this type of job"
+                        message: "You have already secured one place for this type of job"
                     });
 
                     // Creating a new Application
