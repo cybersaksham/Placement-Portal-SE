@@ -9,6 +9,7 @@ import ApplicationState from "../Context/Application/ApplicationState"
 import HiringState from "../Context/Hiring/HiringState"
 import PostingState from "../Context/Posting/PostingState"
 import StatsState from "../Context/Stats/StatsState"
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
       const token = JSON.parse(localStorage.getItem("token"));
       if (!token) router.push("/auth/login");
     }
+    //eslint-disable-next-line
   }, [router.pathname])
 
   return (
@@ -30,6 +32,9 @@ function MyApp({ Component, pageProps }) {
             <HiringState>
               <PostingState>
                 <StatsState>
+                  <Head>
+                    <title>Placement Portal</title>
+                  </Head>
                   <Main Component={Component} pageProps={pageProps} />
                 </StatsState>
               </PostingState>

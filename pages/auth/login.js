@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { userTypes } from '../../lib/frontendTypes'
 import AuthContext from '../../Context/Auth/AuthContext';
 
-const login = () => {
+const Login = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const [authType, setAuthType] = useState(userTypes.company);
@@ -126,7 +126,7 @@ const login = () => {
                 <div className="mb-3 row">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-8">
-                        <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
+                        <p>Don&apos;t have an account? <Link href="/auth/register">Register</Link></p>
                     </div>
                 </div>
             </fieldset>
@@ -134,4 +134,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login

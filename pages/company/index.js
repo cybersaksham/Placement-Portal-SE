@@ -15,6 +15,7 @@ const Company = () => {
 
     useEffect(() => {
         fetchCompanies();
+        //eslint-disable-next-line
     }, [])
 
     return isloader ? <Loader /> : companies && companies.length === 0 ? <center className='mt-3 fw-bold fs-3'>No companies found</center> : (
@@ -40,7 +41,7 @@ const Company = () => {
                             {el.type}
                         </td>
                         <td className="txt-oflo">
-                            <a href={`mailto:${el.email}`} target="_blank">{el.email}</a>
+                            <a href={`mailto:${el.email}`} target="_blank" rel="noreferrer">{el.email}</a>
                         </td>
                         <td className="txt-oflo">
                             {el.headOffice}

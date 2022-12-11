@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { branchTypes, userTypes } from '../../lib/frontendTypes'
 import AuthContext from '../../Context/Auth/AuthContext';
 
-const register = () => {
+const Register = () => {
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -290,4 +290,4 @@ const register = () => {
     )
 }
 
-export default register
+export default Register

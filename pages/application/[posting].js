@@ -25,6 +25,7 @@ const Application = () => {
         if (posting) {
             fetchApplications();
         }
+        //eslint-disable-next-line
     }, [posting])
 
 

@@ -16,6 +16,7 @@ const Postings = () => {
 
     useEffect(() => {
         fetchPostings();
+        //eslint-disable-next-line
     }, [])
 
     return isLoader ? <Loader /> : postings && postings.jobs && postings.interns && (

@@ -19,6 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     searchStats();
+    //eslint-disable-next-line
   }, [])
 
   return (

@@ -25,6 +25,7 @@ const User = () => {
         if (userId) {
             findUser();
         }
+        //eslint-disable-next-line
     }, [userId])
 
 

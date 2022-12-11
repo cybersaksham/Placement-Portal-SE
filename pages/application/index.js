@@ -24,6 +24,7 @@ const Application = () => {
         if (currentUser) {
             fetchApplications();
         }
+        //eslint-disable-next-line
     }, [currentUser])
 
     useEffect(() => {
