@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
 import Avatar from 'react-avatar';
 import AuthContext from '../Context/Auth/AuthContext';
+import { userTypes } from "../lib/frontendTypes";
 
 const Navbar = () => {
     const { currentUser, logoutUser } = useContext(AuthContext);
@@ -35,6 +36,11 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className={`nav-link ${router.pathname.startsWith("/posting") ? "active" : ""}`} aria-current="page" href="/posting">
                                 Postings
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link ${router.pathname.startsWith("/company") ? "active" : ""}`} aria-current="page" href="/company">
+                                Companies
                             </Link>
                         </li>
                         <li className="nav-item">

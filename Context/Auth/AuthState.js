@@ -8,6 +8,7 @@ const AuthState = (props) => {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [company, setCompany] = useState(null);
+  const [companies, setCompanies] = useState([]);
   const [student, setStudent] = useState(null);
   const checkRequest = useRequest();
   const router = useRouter();
@@ -89,6 +90,22 @@ const AuthState = (props) => {
     );
   };
 
+  // Get All Companies
+  const getAllCompanies = async () => {
+    const response = await fetch(HOST + "/allCompanies", {
+      method: "GET"
+    });
+    const json = await response.json();
+    checkRequest(
+      response.status,
+      json.error + ": " + json.message,
+      null,
+      () => {
+        setCompanies(json);
+      }
+    );
+  };
+
   // Registering Company
   const registerCompany = async ({ name, email, password, cPassword, type, headOffice }) => {
     if (password === cPassword) {
@@ -165,9 +182,9 @@ const AuthState = (props) => {
   return (
     <AuthContext.Provider value={{
       loginUser, logoutUser, fetchUser,
-      getCompany, registerCompany,
+      getCompany, getAllCompanies, registerCompany,
       getStudent, registerStudent,
-      currentUser, company, student
+      currentUser, company, companies, student
     }}>
       {props.children}
     </AuthContext.Provider>
