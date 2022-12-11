@@ -7,7 +7,7 @@ const PostingState = (props) => {
   const HOST = "/api/posting";
 
   const [currentPosting, setCurrentPosting] = useState(null);
-  const [postings, setPostings] = useState([]);
+  const [postings, setPostings] = useState(null);
   const checkRequest = useRequest();
   const router = useRouter();
 
@@ -70,6 +70,22 @@ const PostingState = (props) => {
       json.error + ": " + json.message,
       "Closed the posting: " + String(postingId),
       async () => {
+        for (let index = 0; index < postings.interns.length; index++) {
+          const element = postings.interns[index];
+          if (element._id === postingId) {
+            let newData = postings;
+            newData.interns[index].isClosed = true;
+            setPostings(newData);
+          }
+        }
+        for (let index = 0; index < postings.jobs.length; index++) {
+          const element = postings.jobs[index];
+          if (element._id === postingId) {
+            let newData = postings;
+            newData.jobs[index].isClosed = true;
+            setPostings(newData);
+          }
+        }
         setCurrentPosting(json);
       }
     );
