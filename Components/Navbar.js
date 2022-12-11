@@ -43,6 +43,11 @@ const Navbar = () => {
                                 Companies
                             </Link>
                         </li>
+                        {currentUser && currentUser.usertype === userTypes.student && <li className="nav-item">
+                            <Link className={`nav-link ${router.pathname.startsWith("/application") ? "active" : ""}`} aria-current="page" href="/application">
+                                Applications
+                            </Link>
+                        </li>}
                         <li className="nav-item">
                             {
                                 currentUser ?

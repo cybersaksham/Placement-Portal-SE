@@ -31,11 +31,13 @@ export default nextConnect()
                     path: "posting",
                     populate: { path: "company", select: "-password" }
                 }).lean();
-            data.company = data.posting.company;
-            delete data.posting.company;
-            let moreDetails = await modelTypes[data.posting.type].findById(data.posting._id);
-            data.posting.details = moreDetails;
-            return res.send(data);
+            Array.from(data).forEach((el, i) => {
+                let newData = el;
+                newData.company = newData.posting.company;
+                delete newData.posting.company;
+                data[i] = newData;
+            })
+            return res.json(data);
         } catch (e) {
             return res.status(500).json({
                 error: "Internal Server Error",
