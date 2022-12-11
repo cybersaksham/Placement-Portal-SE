@@ -63,7 +63,8 @@ export default nextConnect()
                                 let newData = await ApplicationModel.findByIdAndUpdate(applicationId,
                                     { $set: { status: applicationStatus.rejected } },
                                     { new: true },
-                                ).populate({ path: "student", select: "-password" });
+                                ).populate("posting")
+                                    .populate({ path: "student", select: "-password" });
                                 return res.json(newData);
                             } else {
                                 return res.status(400).json({

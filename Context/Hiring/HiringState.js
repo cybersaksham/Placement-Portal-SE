@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useRequest from "../../Hooks/Request";
+import ApplicationContext from "../Application/ApplicationContext";
 import HiringContext from "./HiringContext";
 
 const HiringState = (props) => {
   const HOST = "/api/hiring";
 
+  const applicationFuncs = useContext(ApplicationContext);
   const [currentHiring, setCurrentHiring] = useState(null);
   const [hirings, setHirings] = useState([]);
   const checkRequest = useRequest();
@@ -87,7 +89,9 @@ const HiringState = (props) => {
       response.status,
       json.error + ": " + json.message,
       "Hired the student: " + String(json.student.sid),
-      async () => { }
+      async () => {
+        applicationFuncs.getByPosting({ postingId: json.posting._id });
+      }
     );
   };
 
@@ -111,7 +115,9 @@ const HiringState = (props) => {
       response.status,
       json.error + ": " + json.message,
       "Rejected the student: " + String(json.student.sid),
-      async () => { }
+      async () => {
+        applicationFuncs.getByPosting({ postingId: json.posting._id });
+      }
     );
   };
 

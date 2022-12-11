@@ -61,14 +61,13 @@ export default nextConnect()
                             if (data.status === applicationStatus.applied &&
                                 !data.posting.isClosed) {
                                 // Closing all other applications
-                                await ApplicationModel.populate("posting")
-                                    .updateMany(
-                                        {
-                                            "posting.type": data.posting.type,
-                                            student: application.student
-                                        },
-                                        { $set: { status: applicationStatus.closed } },
-                                    )
+                                await ApplicationModel.updateMany(
+                                    {
+                                        type: data.posting.type,
+                                        student: application.student
+                                    },
+                                    { $set: { status: applicationStatus.closed } },
+                                )
                                 let hired = await hiringTypes[data.posting.type].create({
                                     posting: data.posting.id,
                                     student: data.student

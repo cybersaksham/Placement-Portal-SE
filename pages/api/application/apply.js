@@ -105,7 +105,8 @@ export default nextConnect()
 
                     // Creating a new Application
                     let application = await ApplicationModel.create({
-                        posting, student: userId, resume, status: applicationStatus.applied
+                        posting, student: userId, resume, status: applicationStatus.applied,
+                        type: post.type
                     });
 
                     return res.json(application);
