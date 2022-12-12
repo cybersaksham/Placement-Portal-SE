@@ -1,8 +1,13 @@
 import Link from "next/link";
+import React, { useContext } from "react";
+import AuthContext from "../Context/Auth/AuthContext";
 import { applicationStatus } from "../lib/frontendTypes";
+import { downloadPdf } from "../lib/utils";
 
 const ApplicationTable = ({ applications }) => {
-    return applications.length === 0 ? <center className='mt-3 fw-bold fs-3'>No application found</center> : (
+    const { currentUser } = useContext(AuthContext);
+
+    return currentUser && applications.length === 0 ? <center className='mt-3 fw-bold fs-3'>No application found</center> : (
         <table className="table table-hover">
             <thead>
                 <tr>

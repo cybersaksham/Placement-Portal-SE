@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { applicationStatus, postTypes } from "../../lib/frontendTypes";
-import { downloadPdf } from "../../lib/utils";
+import { postTypes } from "../../lib/frontendTypes";
 import ApplicationContext from "../../Context/Application/ApplicationContext";
-import Link from "next/link";
 import Loader from "../../Components/Loader";
 import AuthContext from "../../Context/Auth/AuthContext";
 import ApplicationTable from "../../Components/ApplicationTable";
